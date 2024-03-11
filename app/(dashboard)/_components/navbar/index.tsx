@@ -1,9 +1,26 @@
-import { UserButton } from "@clerk/nextjs"
+import { OrganizationSwitcher, UserButton } from "@clerk/nextjs"
 
 const Navbar = () => {
   return (
     <div className="navbar">
-        <h1>Navbar</h1>
+        <OrganizationSwitcher 
+          hidePersonal
+          appearance={{
+            elements: {
+              rootBox: {
+                display:"flex",
+                backgroundColor:"white",
+                borderRadius:"8px",
+                padding:"8px 12px",
+                outline:"none"
+              },
+              organizationSwitcherTrigger: {
+                outline:"none",
+                backgroundColor:"white"
+              }
+            }
+          }}
+        />
         <UserButton />
     </div>
   )

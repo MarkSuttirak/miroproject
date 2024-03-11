@@ -1,12 +1,9 @@
 "use client"
 
 import { useOrganizationList } from "@clerk/nextjs"
+import OrgItem from "./org-item"
 
-type OrgTitle = {
-    title?: string
-}
-
-const OrgList = ({title}: OrgTitle) => {
+const OrgList = () => {
     const { userMemberships } = useOrganizationList({
         userMemberships: {
             infinite: true
@@ -16,13 +13,17 @@ const OrgList = ({title}: OrgTitle) => {
     if (!userMemberships.data?.length) return null
 
     return (
-      <div>
-        <h2 className="px-2">Your organizations</h2>
-        <ul>
+      <div className="flex flex-col gap-y-4">
+        <h2 className="px-2 text-lg font-semibold">Your organizations</h2>
+
+        <ul className="flex flex-col gap-y-2">
             {userMemberships.data?.map(mem => (
-                <li key={mem.organization.id} className="sidebar-btn">
-                    {mem.organization.name}
-                </li>
+                <OrgItem
+                  key={mem.organization.id}
+                  id={mem.organization.id}
+                  name={mem.organization.name}
+                  imageUrl={mem.organization.imageUrl}
+                />
             ))}
         </ul>
       </div>

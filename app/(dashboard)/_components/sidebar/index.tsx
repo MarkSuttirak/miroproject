@@ -1,33 +1,57 @@
-import { CreateOrganization } from "@clerk/nextjs"
-import { ReactNode } from "react"
-import { Plus } from "lucide-react"
-import AddOrganizationButton from "./add-org-button"
-import OrgList from "./org-list"
+"use client"
 
-type SidebarMenus = {
-    title: string,
-    icon: ReactNode,
-    link?: string,
-    component?: ReactNode
+import { ReactNode, useEffect, useState } from "react"
+import { AppWindow, Plus } from "lucide-react"
+import OrgList from "./org-list"
+import Link from "next/link"
+import { cn } from "@/lib/utils"
+
+export interface SidebarMenuProps {
+  title: string,
+  icon: ReactNode,
+  link: string
 }
 
-const sidebarMenus: SidebarMenus[] = [
-    {
-      title:"Add Organization",
-      icon:<Plus />,
-      component:<AddOrganizationButton />
-    }
+const sidebarMenus: SidebarMenuProps[] = [
+  {
+    title:"Add Organization",
+    icon:<Plus />,
+    link:'/organization/add'
+  },
+  {
+    title:"Manage Organization",
+    icon:<AppWindow />,
+    link:'/organization/manage'
+  }
 ]
 
 const Sidebar = () => {
-    return (
-      <div className="h-full w-[240px] text-white bg-blue-800 fixed left-0 z-[1] p-4">
-        <h1 className="text-2xl font-bold mb-6">Miroproj</h1>
+  const [isMenuActive, setIsMenuActive] = useState<string>(location.pathname)
 
-        <OrgList />
-        <AddOrganizationButton />
-      </div>
-    )
+  useEffect(() => {
+    setIsMenuActive(location.pathname)
+  }, [isMenuActive])
+
+  return (
+    <div className="h-full flex flex-col gap-y-2 w-[300px] text-white bg-blue-600 fixed left-0 z-[1] p-4">
+      <Link href="/">
+        <h1 className="text-2xl font-bold mb-4 text-center">Miroproj</h1>
+      </Link>
+
+      <OrgList />
+
+      {sidebarMenus.map(menu => (
+        <Link href={menu.link}>
+          <button 
+            className={cn("sidebar-btn", {"bg-white/25": isMenuActive === menu.link})}
+          >
+            {menu.icon}
+            <p className="text-base">{menu.title}</p>
+          </button>
+        </Link>
+      ))}
+    </div>
+  )
 }
 
 export default Sidebar
