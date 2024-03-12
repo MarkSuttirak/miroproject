@@ -1,32 +1,70 @@
 "use client"
 
-import { Input } from "@/components/ui/input"
-import { useSearchParams } from "next/navigation"
-import { useRouter } from "next/navigation"
-import { ChangeEvent, useEffect, useState } from "react"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { KeyboardEvent, useEffect, useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Search } from "lucide-react"
+
+interface SearchResult {
+  title: string,
+  link?: string
+}
+
+const searchList: SearchResult[] = [
+  {
+    title:"Add organization",
+    link:"/organization/add"
+  },
+  {
+    title:"Manage organization",
+    link:"/organization/manage"
+  }
+] 
 
 const Searchbar = () => {
-
-  const [value, setValue] = useState("")
-  const searchParams = useSearchParams()
-  const search = searchParams.get('search')
-  const router = useRouter()
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value)
-  }
-
+  const [open, setOpen] = useState(false)
+ 
   return (
-    <>
-      <Input 
-        className="w-[400px] outline-none text-black" 
-        placeholder="Search boards..."
-        onChange={handleChange}
-        value={value}
-      />
-
-      <p>Search: {search}</p>
-    </>
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          role="combobox"
+          aria-expanded={open}
+          className="w-[320px] text-black justify-start items-center gap-x-2"
+        >
+          <Search className="w-4 h-4"/>
+          Search...
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-[320px] p-0 z-[100]">
+        <Command>
+          <CommandInput placeholder="Search framework..." />
+          <CommandList>
+            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandGroup heading="Search results">
+              {searchList.map(list => (
+                <CommandItem>
+                  {list.title}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
   )
 }
 

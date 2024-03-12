@@ -5,13 +5,24 @@ import OrgList from "./org-list"
 import Link from "next/link"
 import { boardMenus, orgMenus } from "../../_data/sidebar-menus"
 import MenuLink from "./menu-link"
-import { OrganizationInvitation } from "@clerk/nextjs/server"
+import { usePathname } from 'next/navigation'
+import { cn } from "@/lib/utils"
 
-const Sidebar = () => {
-  const [activeMenu, setActiveMenu] = useState<string>(location.pathname)
+interface OpenMobileSidebarProps {
+  isSidebarOpen?: boolean,
+  setIsSidebarOpen?: Function
+}
+
+const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => {
+  const pathname = usePathname()
+  const [activeMenu, setActiveMenu] = useState(pathname)
+
+  useEffect(() => {
+    setActiveMenu(pathname)
+  }, [pathname])
 
   return (
-    <div className="h-full flex flex-col gap-y-6 w-[280px] text-white bg-blue-600 fixed left-0 top-0 z-[1] p-4">
+    <div className={cn("lg:translate-x-0 h-full flex flex-col gap-y-6 w-[280px] text-white bg-blue-600 fixed left-0 top-0 z-[100] p-4 -translate-x-full", {"translate-x-0": isSidebarOpen})}>
       <Link href="/">
         <h1 className="text-2xl font-bold mb-2 text-center">Miroproj</h1>
       </Link>
@@ -23,7 +34,14 @@ const Sidebar = () => {
           <OrgList />
 
           {orgMenus.map(menu => (
-            <MenuLink link={menu.link} active={activeMenu} setActive={setActiveMenu} icon={menu.icon} title={menu.title}/>
+            <MenuLink 
+              key={menu.title} 
+              link={menu.link} 
+              active={activeMenu} 
+              setActive={setActiveMenu} 
+              icon={menu.icon} 
+              title={menu.title}
+            />
           ))}
         </div>
       </section>
@@ -33,7 +51,14 @@ const Sidebar = () => {
           <h2 className="px-2 text-lg font-semibold">Boards</h2>
 
           {boardMenus.map(menu => (
-            <MenuLink link={menu.link} active={activeMenu} setActive={setActiveMenu} icon={menu.icon} title={menu.title}/>
+            <MenuLink 
+              key={menu.title} 
+              link={menu.link} 
+              active={activeMenu} 
+              setActive={setActiveMenu} 
+              icon={menu.icon} 
+              title={menu.title}
+            />
           ))}
         </div>
       </section>

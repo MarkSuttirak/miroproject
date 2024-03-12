@@ -9,7 +9,7 @@ const DashboardPage = () => {
 
   return (
     <div>
-      {!organization ? (
+      {organization ? (
         <EmptyOrg />
       ) : (
         <h1 className="dashboard-title">My boards</h1>

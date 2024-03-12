@@ -5,7 +5,7 @@ export const Loading = () => {
   }
 
   return (
-    <div className="h-full w-full flex items-center justify-center flex-col gap-y-6">
+    <div className="h-screen w-full flex items-center justify-center flex-col gap-y-6">
       <div className="animate-spin w-12 h-12 flex justify-center items-center rounded-full" style={bgGradient}>
         <div className="bg-white w-10 h-10 rounded-full" />
       </div>
