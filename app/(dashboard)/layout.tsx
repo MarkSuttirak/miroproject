@@ -7,7 +7,7 @@ interface DashboardLayoutProps {
 
 const DashboardLayout = ({children} : DashboardLayoutProps) => {
     return (
-        <main>
+        <main className="fade-in">
             <Sidebar />
             <Navbar />
             

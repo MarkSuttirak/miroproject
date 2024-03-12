@@ -5,8 +5,19 @@ const AddOrganization = () => {
         <CreateOrganization 
           appearance={{
             elements: {
-              rootBox: {
-                boxShadow:"none"
+              rootBox:{
+                width:"100%"
+              },
+              card: {
+                boxShadow:"none",
+                width:"100%",
+                maxWidth:"none"
+              },
+              scrollBox:{
+                overflow:"visible",
+              },
+              pageScrollBox:{
+                padding:0
               }
             }
           }}

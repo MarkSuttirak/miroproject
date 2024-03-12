@@ -6,12 +6,20 @@ html, body, :root {
   height:100%;
 }
 
+.fade-in {
+  animation:fade-in 600ms;
+}
+
+.dashboard-title {
+  @apply text-3xl font-semibold
+}
+
 .navbar {
-  @apply ml-[300px] p-4 bg-blue-400 flex items-center justify-between text-white
+  @apply p-4 bg-blue-400 flex items-center justify-between text-white fixed right-0 top-0 w-full lg:w-[calc(100%_-_280px)]
 }
 
 .main-dashboard {
-  @apply ml-[300px] p-10
+  @apply lg:ml-[280px] p-10 mt-20
 }
 
 .sidebar-btn {
@@ -88,5 +96,14 @@ html, body, :root {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity:0
+  }
+  to {
+    opacity:1
   }
 }

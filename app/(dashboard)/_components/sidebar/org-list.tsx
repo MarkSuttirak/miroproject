@@ -13,9 +13,6 @@ const OrgList = () => {
     if (!userMemberships.data?.length) return null
 
     return (
-      <div className="flex flex-col gap-y-4">
-        <h2 className="px-2 text-lg font-semibold">Your organizations</h2>
-
         <ul className="flex flex-col gap-y-2">
             {userMemberships.data?.map(mem => (
                 <OrgItem
@@ -26,7 +23,6 @@ const OrgList = () => {
                 />
             ))}
         </ul>
-      </div>
     )
 }
 
