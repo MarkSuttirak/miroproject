@@ -22,7 +22,12 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
   }, [pathname])
 
   return (
-    <div className={cn("lg:translate-x-0 h-full flex flex-col gap-y-6 w-[280px] text-white bg-blue-600 fixed left-0 top-0 z-[100] p-4 -translate-x-full", {"translate-x-0": isSidebarOpen})}>
+    <div 
+      className={
+        cn("-translate-x-full lg:translate-x-0 h-full flex flex-col gap-y-6 w-[280px] text-white bg-blue-600 fixed left-0 top-0 z-[100] p-4", 
+        {"translate-x-0": isSidebarOpen})
+      }
+    >
       <Link href="/">
         <h1 className="text-2xl font-bold mb-2 text-center">Miroproj</h1>
       </Link>

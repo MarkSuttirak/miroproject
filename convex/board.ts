@@ -10,7 +10,7 @@ export const create = mutation({
     const identity = await ctx.auth.getUserIdentity()
 
     if (!identity){
-      throw new Error("unauthorized")
+      throw new Error("Unauthorized")
     }
   }
 })
