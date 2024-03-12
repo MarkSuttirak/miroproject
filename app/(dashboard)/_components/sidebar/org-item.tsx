@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { useOrganizationList, useOrganization } from "@clerk/nextjs"
 import { cn } from "@/lib/utils"
+import { Check } from "lucide-react"
 
 interface OrgItem {
     id: string,
@@ -21,16 +22,20 @@ const OrgItem = ({id, name, imageUrl} : OrgItem) => {
     }
 
     return (
-        <div className={cn("sidebar-btn", {'bg-white/25': isActive})} onClick={onClick}>
-          <Image 
-            alt={name} 
-            src={imageUrl} 
-            className='rounded-md'
-            width={24}
-            height={24}
-          />
+        <div className="sidebar-btn justify-between" onClick={onClick}>
+          <div className="flex items-center gap-x-2">
+            <Image 
+              alt={name} 
+              src={imageUrl} 
+              className='rounded-md'
+              width={24}
+              height={24}
+            />
 
-          <p className="text-base">{name}</p>
+            <p className="text-base">{name}</p>
+          </div>
+
+          {isActive && <Check />}
         </div>
     )
 }

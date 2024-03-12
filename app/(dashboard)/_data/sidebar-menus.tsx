@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { AppWindow, Plus } from "lucide-react"
+import { AppWindow, Plus, Clipboard, FolderHeart } from "lucide-react"
 
 export interface SidebarMenuProps {
     title: string,
@@ -23,12 +23,12 @@ export const orgMenus: SidebarMenuProps[] = [
 export const boardMenus: SidebarMenuProps[] = [
   {
     title:"Team boards",
-    icon:<Plus />,
+    icon:<Clipboard />,
     link:'/board/'
   },
   {
     title:"Favourite boards",
-    icon:<Plus />,
+    icon:<FolderHeart />,
     link:'/board/favourites'
   },
 ]

@@ -8,16 +8,19 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import Sidebar from "../sidebar"
+import Searchbar from "./searchbar"
 
 const Navbar = () => {
   return (
-    <div className="navbar">
-      <Sheet>
-        <SheetTrigger>Open</SheetTrigger>
-        <SheetContent className="p-0 bg-transparent w-[280px]" side="left">
-          <Sidebar />
-        </SheetContent>
-      </Sheet>
+    <nav className="navbar">
+      <div className="lg:hidden">
+        <Sheet>
+          <SheetTrigger>Open</SheetTrigger>
+          <SheetContent className="p-0 bg-transparent w-[280px]" side="left">
+            <Sidebar />
+          </SheetContent>
+        </Sheet>
+      </div>
 
       <OrganizationSwitcher 
         hidePersonal
@@ -38,9 +41,10 @@ const Navbar = () => {
         }}
       />
       <div className="flex items-center gap-x-4">
+        <Searchbar />
         <UserButton />
       </div>
-    </div>
+    </nav>
   )
 }
 

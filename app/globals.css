@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, :root {
-  height:100%;
-}
-
 .fade-in {
   animation:fade-in 600ms;
 }
@@ -15,7 +11,7 @@ html, body, :root {
 }
 
 .navbar {
-  @apply p-4 bg-blue-400 flex items-center justify-between text-white fixed right-0 top-0 w-full lg:w-[calc(100%_-_280px)]
+  @apply p-4 bg-blue-400 flex items-center justify-between text-white fixed right-0 top-0 w-full lg:w-[calc(100%_-_280px)] z-[99]
 }
 
 .main-dashboard {

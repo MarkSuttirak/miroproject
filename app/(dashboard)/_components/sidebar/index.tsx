@@ -10,10 +10,6 @@ import { OrganizationInvitation } from "@clerk/nextjs/server"
 const Sidebar = () => {
   const [activeMenu, setActiveMenu] = useState<string>(location.pathname)
 
-  useEffect(() => {
-    setActiveMenu(location.pathname)
-  }, [activeMenu])
-
   return (
     <div className="h-full flex flex-col gap-y-6 w-[280px] text-white bg-blue-600 fixed left-0 top-0 z-[1] p-4">
       <Link href="/">
@@ -27,7 +23,7 @@ const Sidebar = () => {
           <OrgList />
 
           {orgMenus.map(menu => (
-            <MenuLink link={menu.link} active={location.pathname} icon={menu.icon} title={menu.title}/>
+            <MenuLink link={menu.link} active={activeMenu} setActive={setActiveMenu} icon={menu.icon} title={menu.title}/>
           ))}
         </div>
       </section>
@@ -37,7 +33,7 @@ const Sidebar = () => {
           <h2 className="px-2 text-lg font-semibold">Boards</h2>
 
           {boardMenus.map(menu => (
-            <MenuLink link={menu.link} active={location.pathname} icon={menu.icon} title={menu.title}/>
+            <MenuLink link={menu.link} active={activeMenu} setActive={setActiveMenu} icon={menu.icon} title={menu.title}/>
           ))}
         </div>
       </section>
