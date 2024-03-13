@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useOrganizationList, useOrganization } from "@clerk/nextjs"
 import { cn } from "@/lib/utils"
 import { Check } from "lucide-react"
+import { toast } from "@/components/ui/use-toast"
 
 interface OrgItem {
     id: string,
@@ -19,6 +20,16 @@ const OrgItem = ({id, name, imageUrl} : OrgItem) => {
     const onClick = () => {
         if (!setActive) return;
         setActive({organization: id})
+        .then(() => {
+          toast({
+            title: `Switched the team to ${name}`
+          })
+        })
+        .catch(() => {
+          toast({
+            title: 'Failed to switch the team, please try again.'
+          })
+        })
     }
 
     return (

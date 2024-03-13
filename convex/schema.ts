@@ -6,13 +6,12 @@ export default defineSchema({
     title: v.string(),
     orgId: v.string(),
     authorId: v.string(),
-    authorName: v.string(),
     imageUrl: v.string(),
     favourite: v.boolean()
   })
   .index("by_org", ["orgId"])
   .searchIndex("search_title", {
     searchField: "title",
-    filterFields: ["orgId"]
+    filterFields: ["orgId", "favourite"]
   })
 })

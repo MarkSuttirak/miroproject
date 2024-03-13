@@ -1,4 +1,4 @@
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 export const create = mutation({
@@ -14,12 +14,31 @@ export const create = mutation({
       throw new Error("Unauthorized")
     }
 
-    // const board = await ctx.db.insert("boards", {
-    //   orgId: args.orgId,
-    //   title: args.title,
-    //   authorId: identity.subject,
-    //   authorName: identity.name!,
-    //   favourite: args.favourite
-    // })
+    const defaultImage = '/next.svg'
+
+    const board = await ctx.db.insert("boards", {
+      orgId: args.orgId,
+      title: args.title,
+      authorId: identity.subject,
+      favourite: args.favourite,
+      imageUrl: defaultImage
+    })
+
+    return board
+  }
+})
+
+export const getBoard = query({
+  args: {
+    orgId: v.string()
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity()
+
+    if (!identity){
+      throw new Error("Unauthorized")
+    }
+
+    ctx.db.query("boards").collect()
   }
 })

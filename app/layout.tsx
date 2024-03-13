@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import ConvexClientProvider from "@/providers/convex-client-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={plusJakartaSans.className}>
         <ConvexClientProvider>
+          <Toaster />
           {children}
         </ConvexClientProvider>
       </body>

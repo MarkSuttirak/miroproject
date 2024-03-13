@@ -2,15 +2,20 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import EmptyBoards from "../_components/board/empty-board"
+import { api } from "@/convex/_generated/api"
+import { useQuery } from "convex/react"
 
-const Board = () => {
-  const data = []
+const Board = ({ orgId } : { orgId: string }) => {
 
+  // Temporary code, will be changed to query of boards
+  const data = useQuery(api.board.getBoard, { orgId })
+
+  console.log(data)
   return (
-    <div className="flex flex-col items-center h-[60vh] w-full justify-center gap-y-4">
-      <h1 className="dashboard-title">No boards</h1>
-      <p>Create a board to get started.</p>
-    </div>
+    <>
+      <EmptyBoards />
+    </>
   )
 }
 
