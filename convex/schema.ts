@@ -12,6 +12,6 @@ export default defineSchema({
   .index("by_org", ["orgId"])
   .searchIndex("search_title", {
     searchField: "title",
-    filterFields: ["orgId", "favourite"]
+    filterFields: ["orgId"]
   })
 })

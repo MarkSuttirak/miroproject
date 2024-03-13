@@ -27,18 +27,3 @@ export const create = mutation({
     return board
   }
 })
-
-export const getBoard = query({
-  args: {
-    orgId: v.string()
-  },
-  handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity()
-
-    if (!identity){
-      throw new Error("Unauthorized")
-    }
-
-    ctx.db.query("boards").collect()
-  }
-})

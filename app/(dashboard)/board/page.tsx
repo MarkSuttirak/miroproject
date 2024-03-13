@@ -8,10 +8,6 @@ import { useQuery } from "convex/react"
 
 const Board = ({ orgId } : { orgId: string }) => {
 
-  // Temporary code, will be changed to query of boards
-  const data = useQuery(api.board.getBoard, { orgId })
-
-  console.log(data)
   return (
     <>
       <EmptyBoards />
