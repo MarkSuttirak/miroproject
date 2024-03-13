@@ -31,7 +31,7 @@ const searchList: SearchResult[] = [
     title:"Manage organization",
     link:"/organization/manage"
   }
-] 
+]
 
 const Searchbar = () => {
   const [open, setOpen] = useState(false)
@@ -56,7 +56,7 @@ const Searchbar = () => {
             <CommandEmpty>No framework found.</CommandEmpty>
             <CommandGroup heading="Search results">
               {searchList.map(list => (
-                <CommandItem>
+                <CommandItem key={list.title}>
                   {list.title}
                 </CommandItem>
               ))}
