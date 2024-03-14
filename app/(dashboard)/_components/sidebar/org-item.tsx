@@ -7,8 +7,8 @@ import { Check } from "lucide-react"
 import { toast } from "@/components/ui/use-toast"
 
 interface OrgItem {
-    id: string,
-    name: string,
+    id: string
+    name: string
     imageUrl: string
 }
 

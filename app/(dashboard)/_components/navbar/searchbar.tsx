@@ -16,6 +16,8 @@ import {
 import { KeyboardEvent, useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
+import { useQuery } from "convex/react"
+import { api } from "@/convex/_generated/api"
 
 interface SearchResult {
   title: string,
@@ -36,6 +38,8 @@ const searchList: SearchResult[] = [
 const Searchbar = () => {
   const [open, setOpen] = useState(false)
 
+  const data = useQuery(api.board.get)
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -46,15 +50,15 @@ const Searchbar = () => {
           className="w-[320px] text-black justify-start items-center gap-x-2"
         >
           <Search className="w-4 h-4"/>
-          Search...
+          Search boards...
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[320px] p-0 z-[100]">
         <Command>
-          <CommandInput placeholder="Search framework..." />
+          <CommandInput placeholder="Search the board" />
           <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
-            <CommandGroup heading="Search results">
+            <CommandEmpty>No results found</CommandEmpty>
+            <CommandGroup heading="Organization">
               {searchList.map(list => (
                 <CommandItem key={list.title}>
                   {list.title}

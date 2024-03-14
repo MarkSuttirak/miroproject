@@ -7,7 +7,7 @@
 }
 
 .dashboard-title {
-  @apply text-3xl font-semibold
+  @apply text-[32px] font-semibold
 }
 
 .navbar {
