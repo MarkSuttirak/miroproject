@@ -16,15 +16,16 @@ const EmptyBoards = () => {
 
     create({
       title: "Untitled",
+      orgName: organization.name,
       orgId: organization.id,
       favourite: false
-    }).then((id) => {
+    }).then(() => {
         toast({
           title:"Board created"
         })
     }).catch(() => {
         toast({
-          title: "Failed to create a board"
+          title:"Failed to create a board"
         })
     })
   }

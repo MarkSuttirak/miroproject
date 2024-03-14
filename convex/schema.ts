@@ -4,8 +4,10 @@ import { defineSchema, defineTable } from "convex/server";
 export default defineSchema({
   boards: defineTable({
     title: v.string(),
+    orgName: v.string(),
     orgId: v.string(),
     authorId: v.string(),
+    authorName: v.string(),
     imageUrl: v.string(),
     favourite: v.boolean()
   })

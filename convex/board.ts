@@ -3,6 +3,7 @@ import { v } from "convex/values";
 
 export const create = mutation({
   args: {
+    orgName: v.string(),
     orgId: v.string(),
     title: v.string(),
     favourite: v.boolean()
@@ -16,14 +17,26 @@ export const create = mutation({
 
     const defaultImage = '/next.svg'
 
-    const board = await ctx.db.insert("boards", {
+    return await ctx.db.insert("boards", {
+      orgName: args.orgName,
       orgId: args.orgId,
       title: args.title,
       authorId: identity.subject,
+      authorName: identity.name!,
       favourite: args.favourite,
       imageUrl: defaultImage
     })
+  }
+})
 
-    return board
+export const get = query({
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity()
+
+    if (!identity){
+      throw new Error("Unauthorized")
+    }
+
+    return await ctx.db.query("boards").collect()
   }
 })
