@@ -5,13 +5,8 @@ import { useMutation, useQuery } from "convex/react"
 import { Loading } from "@/components/loading"
 import { useOrganization } from "@clerk/nextjs"
 import BoardCard from "./_components/dashboard/board-card"
-import { toast } from "@/components/ui/use-toast"
-import { Button } from "@/components/ui/button"
-import { PlusCircle } from "lucide-react"
-import { useCreateBoard } from "@/hooks/use-create-board"
 import EmptyOrg from "./_components/dashboard/empty-org"
 import CreateBoardDialog from "./_components/dashboard/create-board-dialog"
-import DeleteBoardDialog from "./_components/dashboard/delete-board-dialog"
 
 const Board = () => {
   const data = useQuery(api.board.get)

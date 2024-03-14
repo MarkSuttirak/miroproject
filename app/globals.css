@@ -15,7 +15,7 @@
 }
 
 .main-dashboard {
-  @apply lg:ml-[280px] p-10 mt-20
+  @apply lg:ml-[280px] p-10 mt-[72px]
 }
 
 .sidebar-btn {

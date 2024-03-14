@@ -16,7 +16,7 @@ interface DeleteBoardDialogProps {
 }
 
 const DeleteBoardDialog = () => {
-  const { isCreating, deleteBoard } = useDeleteBoard()
+  const { isDeleting, deleteBoard } = useDeleteBoard({})
 
   return (
     <AlertDialog>

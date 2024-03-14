@@ -26,7 +26,7 @@ const BoardActions = ({
     id
 } : ActionsProps) => {
 
-  const { deleteBoard } = useDeleteBoard()
+  const { deleteBoard } = useDeleteBoard({})
 
   return (
       <DropdownMenu>
