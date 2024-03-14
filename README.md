@@ -1,8 +1,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Installed packages
-convex
-@clerk/nextjs
+convex<br>
+@clerk/nextjs<br>
 query-string
 
 ## Getting Started
