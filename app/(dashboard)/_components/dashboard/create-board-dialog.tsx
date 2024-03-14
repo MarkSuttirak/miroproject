@@ -13,8 +13,12 @@ import { Loader2, PlusCircle } from "lucide-react"
 import { useCreateBoard } from "@/hooks/use-create-board"
   
 const CreateBoardDialog = () => {
-  const { isCreating, createBoard } = useCreateBoard()
   const [title, setTitle] = useState<string>("")
+  const [openDialog, setOpenDialog] = useState(false)
+
+  const { isCreating, createBoard } = useCreateBoard({
+    whenDone: () => setOpenDialog(false)
+  })
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value)
@@ -27,7 +31,7 @@ const CreateBoardDialog = () => {
   }
 
   return (
-    <Dialog>
+    <Dialog open={openDialog} onOpenChange={setOpenDialog}>
       <DialogTrigger>
         <Button className="flex items-center gap-x-2">
           <PlusCircle className="w-4 h-4"/>

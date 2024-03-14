@@ -4,7 +4,12 @@ import { api } from "@/convex/_generated/api"
 import { toast } from "@/components/ui/use-toast"
 import { useState } from "react"
 
-export const useCreateBoard = () => {
+interface CreateBoardFuncProps {
+  whenDone?: () => void
+  whenFailed?: () => void
+}
+
+export const useCreateBoard = ({whenDone, whenFailed}: CreateBoardFuncProps) => {
   const { organization } = useOrganization()
   const create = useMutation(api.board.create)
 
@@ -25,13 +30,17 @@ export const useCreateBoard = () => {
           title:"Board created"
         })
         setIsCreating(false)
-
+        if (whenDone){
+          whenDone()
+        }
     }).catch(() => {
         toast({
           title:"Failed to create a board"
         })
         setIsCreating(false)
-
+        if (whenFailed){
+          whenFailed()
+        }
     })
   }
 
