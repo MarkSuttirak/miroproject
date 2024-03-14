@@ -6,7 +6,7 @@ export interface SidebarMenuProps {
     icon: ReactNode,
     link: string
 }
-  
+
 export const orgMenus: SidebarMenuProps[] = [
   {
     title:"Add organization",
@@ -24,11 +24,11 @@ export const boardMenus: SidebarMenuProps[] = [
   {
     title:"Team boards",
     icon:<Clipboard />,
-    link:'/board'
+    link:'/'
   },
   {
     title:"Favourite boards",
     icon:<FolderHeart />,
-    link:'/board/favourites'
+    link:'/favourites'
   },
 ]

@@ -40,3 +40,39 @@ export const get = query({
     return await ctx.db.query("boards").collect()
   }
 })
+
+export const remove = mutation({
+  args: {
+    id: v.id("boards")
+  },
+  handler: async(ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity()
+
+    if (!identity){
+      throw new Error("Unauthorized")
+    }
+
+    await ctx.db.delete(args.id)
+  }
+})
+
+export const favourite = mutation({
+  args: {
+    id: v.id("boards"),
+    favourite: v.boolean(),
+    orgId: v.string()
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity()
+
+    if (!identity){
+      throw new Error("Unauthorized")
+    }
+
+    const board = await ctx.db.get(args.id);
+
+    if (!board){
+      throw new Error("Board not found")
+    }
+  }
+})

@@ -24,7 +24,7 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
   return (
     <div 
       className={
-        cn("-translate-x-full lg:translate-x-0 h-full flex flex-col gap-y-6 w-[280px] text-white bg-blue-600 fixed left-0 top-0 z-[100] p-4", 
+        cn("-translate-x-full lg:translate-x-0 h-full flex flex-col gap-y-6 w-[280px] text-white bg-blue-600 fixed left-0 top-0 z-[49] p-4", 
         {"translate-x-0": isSidebarOpen})
       }
     >

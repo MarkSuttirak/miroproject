@@ -15,12 +15,13 @@ const BoardList = ({filter} : FilterProps) => {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
       {filterData?.map(d => (
         <BoardCard 
-            imageUrl={d.imageUrl} 
-            title={d.title} 
-            key={d._id} 
-            id={d._id} 
-            authorName={d.authorName} 
-            authorId={d.authorId}
+          imageUrl={d.imageUrl} 
+          title={d.title} 
+          key={d._id} 
+          id={d._id} 
+          authorName={d.authorName} 
+          authorId={d.authorId}
+          isFavourite={d.favourite}
         />
       ))}
     </div>
