@@ -1,5 +1,10 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Installed packages
+convex
+@clerk/nextjs
+query-string
+
 ## Getting Started
 
 First, run the development server:
@@ -14,7 +19,8 @@ pnpm dev
 bun dev
 ```
 
-Note: After cloning this project, please run 'npm install' and run 'npm run build' before starting.
+#### Note: After cloning this project, please run 'npm install' and run 'npm run build' before starting.
+#### You also need to run 'npx convex dev' to start the backend
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
