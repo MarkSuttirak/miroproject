@@ -7,47 +7,45 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { DropdownMenuContentProps } from "@radix-ui/react-dropdown-menu"
-import { useDeleteBoard } from "@/hooks/use-delete-board"
-import { Edit, Trash2 } from "lucide-react"
+import UpdateBoardDialog from "./update-board-dialog"
+import DeleteBoardDialog from "./delete-board-dialog"
 
 interface ActionsProps {
-    side?: DropdownMenuContentProps["side"]
-    sideOffset?: DropdownMenuContentProps["sideOffset"]
-    children: React.ReactNode
-    title: string,
-    id?: any
+  side?: DropdownMenuContentProps["side"]
+  sideOffset?: DropdownMenuContentProps["sideOffset"]
+  children: React.ReactNode
+  id?: any
 }
 
 const BoardActions = ({
-    side,
-    sideOffset,
-    children,
-    title,
-    id
+  side,
+  sideOffset,
+  children,
+  id
 } : ActionsProps) => {
-
-  const { deleteBoard } = useDeleteBoard({})
-
   return (
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          {children}
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
-          side={side}
-          sideOffset={sideOffset}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <DropdownMenuItem onClick={() => deleteBoard(id)}>
-            <Trash2 className="w-4 h-4 mr-2"/>
-            Delete
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Edit className="w-4 h-4 mr-2"/>
-            Edit
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        {children}
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent
+        side={side}
+        sideOffset={sideOffset}
+      >
+
+        <DropdownMenuItem asChild>
+
+            <DeleteBoardDialog id={id} />
+
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+
+            <UpdateBoardDialog id={id}/>
+
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 

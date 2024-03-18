@@ -17,22 +17,16 @@ export const useDeleteBoard = ({whenDone, whenFailed}: DeleteBoardFuncProps) => 
 
     mutate({ id })
     .then(() => {
-      toast({
-        title:"Board deleted"
-      })
+      toast({ title:"Board deleted" })
+
       setIsDeleting(false)
-      if (whenDone){
-        whenDone()
-      }
+      whenDone && whenDone()
     })
     .catch(() => {
-      toast({
-        title:"Failed to delete board"
-      }) 
+      toast({ title:"Failed to delete board" }) 
+
       setIsDeleting(false)
-      if (whenFailed){
-        whenFailed()
-      }
+      whenFailed && whenFailed()
     })
   }
 

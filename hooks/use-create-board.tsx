@@ -15,32 +15,26 @@ export const useCreateBoard = ({whenDone, whenFailed}: CreateBoardFuncProps) => 
 
   const [isCreating, setIsCreating] = useState(false)
 
-  const createBoard = (title: string) => {
+  const createBoard = (boardTitle: string) => {
     if (!organization) return
 
     setIsCreating(true)
 
     create({
-      title: title,
+      title: boardTitle,
       orgName: organization.name,
       orgId: organization.id,
       favourite: false
     }).then(() => {
-        toast({
-          title:"Board created"
-        })
+        toast({ title:"Board created" })
+
         setIsCreating(false)
-        if (whenDone){
-          whenDone()
-        }
+        whenDone && whenDone()
     }).catch(() => {
-        toast({
-          title:"Failed to create a board"
-        })
+        toast({ title:"Failed to create a board" })
+
         setIsCreating(false)
-        if (whenFailed){
-          whenFailed()
-        }
+        whenFailed && whenFailed()
     })
   }
 

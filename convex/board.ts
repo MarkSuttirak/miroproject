@@ -56,11 +56,10 @@ export const remove = mutation({
   }
 })
 
-export const favourite = mutation({
+export const update = mutation({
   args: {
     id: v.id("boards"),
-    favourite: v.boolean(),
-    orgId: v.string()
+    title: v.string()
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity()
@@ -69,10 +68,26 @@ export const favourite = mutation({
       throw new Error("Unauthorized")
     }
 
-    const board = await ctx.db.get(args.id);
+    await ctx.db.patch(args.id, {
+      title: args.title
+    })
+  }
+})
 
-    if (!board){
-      throw new Error("Board not found")
+export const favourite = mutation({
+  args: {
+    id: v.id("boards"),
+    favourite: v.boolean()
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity()
+
+    if (!identity){
+      throw new Error("Unauthorized")
     }
+
+    await ctx.db.patch(args.id, {
+      favourite: args.favourite
+    })
   }
 })

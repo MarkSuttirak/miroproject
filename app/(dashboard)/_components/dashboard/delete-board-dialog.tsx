@@ -1,42 +1,31 @@
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"  
+import BoardDialog from "@/components/board-dialog" 
 import { useDeleteBoard } from "@/hooks/use-delete-board"
-  
-interface DeleteBoardDialogProps {
-  children: React.ReactNode
-}
+import { Trash2 } from "lucide-react"
+import { useState } from "react"
 
-const DeleteBoardDialog = () => {
-  const { isDeleting, deleteBoard } = useDeleteBoard({})
+const DeleteBoardDialog = ({ id } : { id: any }) => {
+  const [openDialog, setOpenDialog] = useState(false)
+
+  const { isDeleting, deleteBoard } = useDeleteBoard({
+    whenDone: () => setOpenDialog(false)
+  })
 
   return (
-    <AlertDialog>
-      <AlertDialogTrigger>
-        Test
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your account
-            and remove your data from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+    <BoardDialog
+      id={id}
+      trigger={
+        <>
+          <Trash2 className="w-4 h-4 mr-2"/>
+          Delete
+        </>
+      }
+      action="Delete"
+      triggerClassName="w-full flex items-center py-1.5 px-2 text-sm"
+      onSubmit={(val, id) => deleteBoard(id)}
+      openDialog={openDialog}
+      setOpenDialog={setOpenDialog}
+      isSubmitting={isDeleting}
+    />
   )
 }
 
