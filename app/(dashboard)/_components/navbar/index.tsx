@@ -20,6 +20,8 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
+
+      {/* Mobile navbar */}
       <div className="lg:hidden flex items-center">
         <Sheet>
           <SheetTrigger onClick={() => setIsSidebarOpen(true)}>
@@ -31,6 +33,7 @@ const Navbar = () => {
         </Sheet>
       </div>
 
+      {/* Desktop navbar */}
       <div className="hidden lg:block">
         <OrganizationSwitcher 
           hidePersonal

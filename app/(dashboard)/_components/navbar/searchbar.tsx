@@ -13,62 +13,33 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { KeyboardEvent, useEffect, useState } from "react"
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
-import { useQuery } from "convex/react"
-import { api } from "@/convex/_generated/api"
-
-interface SearchResult {
-  title: string,
-  link?: string
-}
-
-const searchList: SearchResult[] = [
-  {
-    title:"Add organization",
-    link:"/organization/add"
-  },
-  {
-    title:"Manage organization",
-    link:"/organization/manage"
-  }
-]
+import { Input } from "@/components/ui/input"
+import Link from "next/link"
 
 const Searchbar = () => {
-  const [open, setOpen] = useState(false)
+  const [searchResult, setSearchResult] = useState<string>("")
 
-  const data = useQuery(api.board.get)
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchResult(e.target.value)
+  }
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-[320px] text-black justify-start items-center gap-x-2"
-        >
-          <Search className="w-4 h-4"/>
-          Search boards...
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-[320px] p-0 z-[100]">
-        <Command>
-          <CommandInput placeholder="Search the board" />
-          <CommandList>
-            <CommandEmpty>No results found</CommandEmpty>
-            <CommandGroup heading="Organization">
-              {searchList.map(list => (
-                <CommandItem key={list.title}>
-                  {list.title}
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+    <div className="flex text-black relative">
+      <Input 
+        placeholder="Search boards..."
+        onChange={handleChange}
+        value={searchResult}
+        className="w-[300px]"
+      />
+
+      {searchResult !== "" && 
+      <Link href={`/search/${searchResult}`}>
+        <Search className="absolute right-2 top-2"/>
+      </Link>}
+    </div>
   )
 }
 

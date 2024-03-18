@@ -21,6 +21,21 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
     setActiveMenu(pathname)
   }, [pathname])
 
+  const MenuItems = ({ menus } : { menus: any[] }) => {
+    return <>
+      {menus.map(menu => (
+        <MenuLink
+          key={menu.title} 
+          link={menu.link} 
+          active={activeMenu} 
+          setActive={setActiveMenu} 
+          icon={menu.icon}
+          title={menu.title}
+        />
+      ))}
+    </>
+  }
+
   return (
     <div 
       className={
@@ -37,17 +52,7 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
           <h2 className="px-2 text-lg font-semibold">Your organizations</h2>
 
           <OrgList />
-
-          {orgMenus.map(menu => (
-            <MenuLink 
-              key={menu.title} 
-              link={menu.link} 
-              active={activeMenu} 
-              setActive={setActiveMenu} 
-              icon={menu.icon} 
-              title={menu.title}
-            />
-          ))}
+          <MenuItems menus={orgMenus}/>
         </div>
       </section>
 
@@ -55,16 +60,7 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
         <div className="flex flex-col gap-y-2">
           <h2 className="px-2 text-lg font-semibold">Boards</h2>
 
-          {boardMenus.map(menu => (
-            <MenuLink 
-              key={menu.title} 
-              link={menu.link} 
-              active={activeMenu} 
-              setActive={setActiveMenu} 
-              icon={menu.icon} 
-              title={menu.title}
-            />
-          ))}
+          <MenuItems menus={boardMenus}/>
         </div>
       </section>
     </div>

@@ -1,10 +1,10 @@
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { DropdownMenuContentProps } from "@radix-ui/react-dropdown-menu"
 import UpdateBoardDialog from "./update-board-dialog"
@@ -33,16 +33,12 @@ const BoardActions = ({
         side={side}
         sideOffset={sideOffset}
       >
-
         <DropdownMenuItem asChild>
-
-            <DeleteBoardDialog id={id} />
-
+          <DeleteBoardDialog id={id} />
         </DropdownMenuItem>
+
         <DropdownMenuItem asChild>
-
-            <UpdateBoardDialog id={id}/>
-
+          <UpdateBoardDialog id={id}/>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -19,7 +19,7 @@
 }
 
 .sidebar-btn {
-  @apply flex items-center text-white hover:bg-white/25 rounded-md py-2 px-3 gap-x-2 w-full transition cursor-pointer text-sm
+  @apply flex items-center text-white hover:bg-white/25 rounded-md py-2 px-3 gap-x-2 w-full transition-all cursor-pointer text-sm
 }
 
 @layer base {

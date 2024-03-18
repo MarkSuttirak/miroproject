@@ -44,29 +44,29 @@ const BoardCard = ({
   }
 
   return (
-      <Card>
-        <CardHeader className="pb-2 relative">
-          <Link href={`/board/${id}`}>
-            <img src={imageUrl} className="w-full !mb-2"/>
+    <Card>
+      <CardHeader className="pb-2 relative">
+        <Link href={`/board/${id}`}>
+          <img src={imageUrl} className="w-full !mb-2"/>
 
-            <CardTitle className="text-xl overflow-hidden text-ellipsis">{title}</CardTitle>
-          </Link>
-        </CardHeader>
-        <CardContent className="flex items-center justify-between">
-          <p className="text-sm">Created by: {authorLabel}</p>
+          <CardTitle className="text-xl overflow-hidden text-ellipsis">{title}</CardTitle>
+        </Link>
+      </CardHeader>
+      <CardContent className="flex items-center justify-between">
+        <p className="text-sm">Created by: {authorLabel}</p>
 
-          <div className="flex items-center gap-x-2">
-            <Heart className="cursor-pointer" fill={isFavourite ? "#f67171" : "transparent"} onClick={setFavourite}/>
+        <div className="flex items-center gap-x-2">
+          <Heart className="cursor-pointer" fill={isFavourite ? "#f67171" : "transparent"} onClick={setFavourite}/>
 
-            <BoardActions 
-              id={id}
-              side="bottom"
-            >
-              <MoreHorizontal />
-            </BoardActions>
-          </div>
-        </CardContent>
-      </Card>
+          <BoardActions 
+            id={id}
+            side="bottom"
+          >
+            <MoreHorizontal />
+          </BoardActions>
+        </div>
+      </CardContent>
+    </Card>
   )
 }
 
