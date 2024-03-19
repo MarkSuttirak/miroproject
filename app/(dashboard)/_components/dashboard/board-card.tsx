@@ -8,6 +8,7 @@ import Link from "next/link"
 import { api } from "@/convex/_generated/api"
 import { useMutation } from "convex/react"
 import { toast } from "@/components/ui/use-toast"
+import Image from "next/image"
 
 interface BoardCardProps {
   title: string
@@ -47,7 +48,7 @@ const BoardCard = ({
     <Card>
       <CardHeader className="pb-2 relative">
         <Link href={`/board/${id}`}>
-          <img src={imageUrl} className="w-full !mb-2"/>
+          <Image src={imageUrl} className="w-full mb-4" alt={title} width={100} height={100}/>
 
           <CardTitle className="text-xl overflow-hidden text-ellipsis">{title}</CardTitle>
         </Link>

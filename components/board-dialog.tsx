@@ -2,6 +2,7 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -19,9 +20,10 @@ interface BoardDialogProps {
   triggerClassName?: string
   action: Action
   onSubmit: (val: string, id: any) => void
-  isSubmitting: boolean,
-  openDialog: boolean,
+  isSubmitting: boolean
+  openDialog: boolean
   setOpenDialog: (val: boolean) => void
+  defaultValue?: string
 }
 
 const BoardDialog = ({ 
@@ -32,7 +34,8 @@ const BoardDialog = ({
   onSubmit,
   isSubmitting,
   openDialog,
-  setOpenDialog
+  setOpenDialog,
+  defaultValue
 } : BoardDialogProps) => {
 
   const [title, setTitle] = useState<string>("")
@@ -66,6 +69,7 @@ const BoardDialog = ({
               className={`border outline-none ${error ? 'border-red-500' : ''}`} 
               onChange={handleChange}
               onKeyDown={handleEnter}
+              defaultValue={action === "Update" ? defaultValue : ""}
               value={title}
             />
             {error && <p className="text-red-500 text-xs">The title cannot be empty</p>}
@@ -76,9 +80,14 @@ const BoardDialog = ({
           </DialogDescription>
         )}
 
-        <Button className="w-fit" onClick={handleSubmit} disabled={isSubmitting}>
-          {isSubmitting ? <Loader2 className="animate-spin"/> : action}
-        </Button>
+        <DialogFooter>
+          <Button className="w-fit" onClick={() => setOpenDialog(false)} variant="outline">
+            Cancel
+          </Button>
+          <Button className="w-fit" onClick={handleSubmit} disabled={isSubmitting}>
+            {isSubmitting ? <Loader2 className="animate-spin"/> : action}
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   )

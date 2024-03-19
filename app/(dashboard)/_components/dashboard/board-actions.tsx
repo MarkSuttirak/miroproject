@@ -15,13 +15,15 @@ interface ActionsProps {
   sideOffset?: DropdownMenuContentProps["sideOffset"]
   children: React.ReactNode
   id?: any
+  title?: string
 }
 
 const BoardActions = ({
   side,
   sideOffset,
   children,
-  id
+  id,
+  title
 } : ActionsProps) => {
   return (
     <DropdownMenu>

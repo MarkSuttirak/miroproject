@@ -91,3 +91,12 @@ export const favourite = mutation({
     })
   }
 })
+
+export const get_room = query({
+  args: {
+    id: v.id("boards")
+  },
+  handler: async (ctx, args) => {
+    return ctx.db.get(args.id)
+  }
+})

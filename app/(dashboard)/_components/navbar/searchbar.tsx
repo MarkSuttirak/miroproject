@@ -1,29 +1,21 @@
 "use client"
 
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react"
-import { Button } from "@/components/ui/button"
+import { ChangeEvent, useState } from "react"
 import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
+import usePathname from 'next/link'
 
 const Searchbar = () => {
   const [searchResult, setSearchResult] = useState<string>("")
+  const searchLink = `/search/${searchResult}`
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchResult(e.target.value)
+  }
+
+  const handleEnter = (e: KeyboardEvent) => {
+    e.key === "Enter" && usePathname({href: searchLink})
   }
 
   return (
@@ -36,9 +28,10 @@ const Searchbar = () => {
       />
 
       {searchResult !== "" && 
-      <Link href={`/search/${searchResult}`}>
-        <Search className="absolute right-2 top-2"/>
-      </Link>}
+        <Link href={searchLink}>
+          <Search className="absolute right-2 top-2"/>
+        </Link>
+      }
     </div>
   )
 }

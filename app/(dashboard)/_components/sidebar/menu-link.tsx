@@ -1,22 +1,22 @@
 import { cn } from "@/lib/utils"
-import { ReactNode, useEffect, MouseEvent } from "react"
+import { ReactNode } from "react"
 import Link from "next/link"
-import { usePathname } from 'next/navigation'
 
 interface MenuLinkProps {
-    link: string,
-    active: string,
-    setActive: Function,
-    icon: ReactNode,
-    title: string,
-    onClick?: Function
+  link: string,
+  active: string,
+  setActive: Function,
+  icon: ReactNode,
+  title: string,
+  onClick?: Function
 }
 
 const MenuLink = ({link, active, setActive, icon, title, onClick} : MenuLinkProps) => {
 
   const handleClickLink = () => {
     setActive(link)
-    if (onClick) onClick()
+
+    onClick && onClick()
   }
 
   return (
