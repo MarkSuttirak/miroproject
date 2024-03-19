@@ -3,7 +3,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Installed packages
 convex<br>
 @clerk/nextjs<br>
-query-string
+#### Liveblocks
+@liveblocks/client<br>
+@liveblocks/react
 
 ## Getting Started
 
