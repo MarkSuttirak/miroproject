@@ -1,3 +1,7 @@
+import { Room } from "@/components/room"
+import Canvas from "./_components/canvas"
+import { Loading } from "@/components/loading"
+
 interface BoardIdProps {
   params: {
     id: string
@@ -6,9 +10,11 @@ interface BoardIdProps {
 
 const BoardId = ({params} : BoardIdProps) => {
   return (
-    <div className="p-20">
-      <h1 className="dashboard-title">This page is still in development. Coming soon...</h1>
-    </div>
+    <Room roomId={params.id} fallBack={<Loading />}>
+      <div className="h-screen fade-in">
+        <Canvas boardId={params.id}/>
+      </div>
+    </Room>
   )
 }
 
