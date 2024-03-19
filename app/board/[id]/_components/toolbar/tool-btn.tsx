@@ -16,13 +16,7 @@ export interface ToolButtonProps {
   isActive: boolean
 }
 
-const ToolButton = ({
-  icon: Icon,
-  label,
-  onClick,
-  isDisabled,
-  isActive
-} : ToolButtonProps) => {
+const ToolButton = ({ icon: Icon, label, onClick, isDisabled, isActive } : ToolButtonProps) => {
   return (
     <TooltipProvider>
       <Tooltip>

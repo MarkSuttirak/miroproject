@@ -13,14 +13,7 @@ interface ToolbarProps {
   canRedo: boolean
 }
 
-export const Toolbar = ({
-  canvasState,
-  setCanvasState,
-  undo,
-  redo,
-  canUndo,
-  canRedo
-}: ToolbarProps) => {
+export const Toolbar = ({ canvasState, setCanvasState, undo, redo, canUndo, canRedo }: ToolbarProps) => {
   const toolButtons: ToolButtonProps[] = [
     {
       label:"Pencil",

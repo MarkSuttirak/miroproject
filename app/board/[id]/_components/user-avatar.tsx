@@ -14,12 +14,7 @@ interface UserAvatarProps {
   borderColor?: string
 }
 
-const UserAvatar = ({
-  src,
-  name,
-  fallback,
-  borderColor
-} : UserAvatarProps) => {
+const UserAvatar = ({ src, name, fallback, borderColor } : UserAvatarProps) => {
   return (
     <TooltipProvider>
       <Tooltip>
