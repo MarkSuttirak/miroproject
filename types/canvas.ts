@@ -100,6 +100,8 @@ export type CanvasState = | {
   corner: Side
 }
 
+export type Layer = RectangleLayer | EllipseLayer | PathLayer | TextLayer
+
 export enum CanvasMode {
   None,
   Selection,
