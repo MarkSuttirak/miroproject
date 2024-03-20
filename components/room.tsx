@@ -14,7 +14,9 @@ export const Room = ({ children, roomId, fallBack } : RoomProps) => {
   return (
     <RoomProvider
       id={roomId}
-      initialPresence={{}}
+      initialPresence={{
+        cursor: null
+      }}
     >
       <ClientSideSuspense fallback={fallBack}>
         {() => children}

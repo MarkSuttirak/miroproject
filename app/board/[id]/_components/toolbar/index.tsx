@@ -1,6 +1,6 @@
-import { CanvasMode } from "../canvas"
+import { CanvasMode, LayerType } from "@/types/canvas"
 import ToolButton, { ToolButtonProps } from "./tool-btn"
-import { Circle, Pencil, Redo, Square, Text, Undo } from "lucide-react"
+import { Circle, MousePointer, Pencil, Redo, Square, TextCursor, Undo } from "lucide-react"
 
 type CanvasState = any
 
@@ -16,32 +16,39 @@ interface ToolbarProps {
 export const Toolbar = ({ canvasState, setCanvasState, undo, redo, canUndo, canRedo }: ToolbarProps) => {
   const toolButtons: ToolButtonProps[] = [
     {
-      label:"Pencil",
+      label:"Select",
+      icon:MousePointer,
+      isActive:
+        canvasState.mode === CanvasMode.Selection || 
+        canvasState.mode === CanvasMode.None || 
+        canvasState.mode === CanvasMode.Translating || 
+        canvasState.mode === CanvasMode.Pressing || 
+        canvasState.mode === CanvasMode.Resizing,
+      onClick:() => {setCanvasState({mode: CanvasMode.Selection})}
+    },
+    {
+      label:"Path",
       icon:Pencil,
-      isDisabled:false,
-      isActive:canvasState.mode === CanvasMode.None,
-      onClick:() => {setCanvasState({mode: CanvasMode.None})}
+      isActive:canvasState.mode === CanvasMode.Inserting && canvasState.layerType === LayerType.Path,
+      onClick:() => {setCanvasState({mode: CanvasMode.Inserting, layerType: LayerType.Path})}
     },
     {
       label:"Square",
       icon:Square,
-      isDisabled:false,
-      isActive:false,
-      onClick:() => {}
+      isActive:canvasState.mode === CanvasMode.Inserting && canvasState.layerType === LayerType.Rectangle,
+      onClick:() => {setCanvasState({mode: CanvasMode.Inserting, layerType: LayerType.Rectangle})}
     },
     {
-      label:"Circle",
+      label:"Ellipse",
       icon:Circle,
-      isDisabled:false,
-      isActive:false,
-      onClick:() => {}
+      isActive:canvasState.mode === CanvasMode.Inserting && canvasState.layerType === LayerType.Ellipse,
+      onClick:() => {setCanvasState({mode: CanvasMode.Inserting, layerType: LayerType.Ellipse})}
     },
     {
       label:"Text",
-      icon:Text,
-      isDisabled:false,
-      isActive:false,
-      onClick:() => {}
+      icon:TextCursor,
+      isActive:canvasState.mode === CanvasMode.Inserting && canvasState.layerType === LayerType.Text,
+      onClick:() => {setCanvasState({mode: CanvasMode.Inserting, layerType: LayerType.Text})}
     },
     {
       label:"Undo",

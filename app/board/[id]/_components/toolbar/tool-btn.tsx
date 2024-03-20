@@ -12,7 +12,7 @@ export interface ToolButtonProps {
   icon: LucideIcon
   label: string
   onClick: () => void
-  isDisabled: boolean
+  isDisabled?: boolean
   isActive: boolean
 }
 
