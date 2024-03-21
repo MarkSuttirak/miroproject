@@ -17,7 +17,8 @@ export const Room = ({ children, roomId, fallBack } : RoomProps) => {
     <RoomProvider
       id={roomId}
       initialPresence={{
-        cursor: null
+        cursor: null,
+        selection: []
       }}
       initialStorage={{
         layers: new LiveMap<string, LiveObject<Layer>>(),
