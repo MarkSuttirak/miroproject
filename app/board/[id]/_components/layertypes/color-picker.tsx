@@ -15,6 +15,7 @@ export const ColorPicker = ({
       <ColorButton onClick={onChange} color={{ r: 0, g: 0, b: 0 }}/>
       <ColorButton onClick={onChange} color={{ r: 212, g: 51, b: 23 }}/>
       <ColorButton onClick={onChange} color={{ r: 54, g: 163, b: 75 }}/>
+      <ColorButton onClick={onChange} color={{ r: 34, g: 82, b: 197 }}/>
     </div>
   )
 }

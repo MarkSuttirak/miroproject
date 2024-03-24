@@ -1,3 +1,4 @@
+import { colorToCss } from "@/lib/utils"
 import { EllipseLayer } from "@/types/canvas"
 
 interface EllipseProps {
@@ -22,13 +23,13 @@ export const Ellipse = ({
       style={{
         transform:`translate(${x}px, ${y}px)`
       }}
-      rx={0}
-      ry={0}
-      width={width}
-      height={height}
+      cx={width / 2}
+      cy={height / 2}
+      rx={width / 2}
+      ry={height / 2}
       strokeWidth={1}
-      fill="#000"
-      stroke="transparent"
+      fill={fill ? colorToCss(fill) : "#000"}
+      stroke={selectionColor || "transparent"}
     />
   )
 }
