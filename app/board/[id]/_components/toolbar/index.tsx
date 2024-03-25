@@ -27,10 +27,10 @@ export const Toolbar = ({ canvasState, setCanvasState, undo, redo, canUndo, canR
       onClick:() => {setCanvasState({mode: CanvasMode.Selection})}
     },
     {
-      label:"Path",
+      label:"Pencil",
       icon:Pencil,
-      isActive:canvasState.mode === CanvasMode.Inserting && canvasState.layerType === LayerType.Path,
-      onClick:() => {setCanvasState({mode: CanvasMode.Inserting, layerType: LayerType.Path})}
+      isActive:canvasState.mode === CanvasMode.Pencil,
+      onClick:() => {setCanvasState({mode: CanvasMode.Pencil})}
     },
     {
       label:"Square",

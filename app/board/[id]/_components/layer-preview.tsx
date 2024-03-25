@@ -4,6 +4,8 @@ import { memo } from "react"
 import { Rectangle } from "./layertypes/rectangle"
 import { Ellipse } from "./layertypes/ellipse"
 import { Text } from "./layertypes/text"
+import { Path } from "./layertypes/path"
+import { colorToCss } from "@/lib/utils"
 
 interface LayerPreviewProps {
   id: string
@@ -22,6 +24,18 @@ export const LayerPreview = memo(({
   if (!layer) return null;
 
   switch (layer.type){
+    case LayerType.Path:
+      return (
+        <Path 
+          key={id}
+          points={layer.points}
+          x={layer.x}
+          y={layer.y}
+          onPointerDown={(e) => onLayerPointerDown(e, id)}
+          fill={layer.fill ? colorToCss(layer.fill) : "#000"}
+          stroke={selectionColor}
+        />
+      )
     case LayerType.Rectangle:
       return (
         <Rectangle 

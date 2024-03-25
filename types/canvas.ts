@@ -43,7 +43,7 @@ export type PathLayer = {
   height: number
   width: number
   fill: Color
-  points?: number[][]
+  points: number[][]
   value?: string
 }
 
@@ -85,7 +85,7 @@ export type CanvasState = | {
   current?: Point
 } | {
   mode: CanvasMode.Inserting,
-  layerType: LayerType.Ellipse | LayerType.Rectangle | LayerType.Text | LayerType.Path
+  layerType: LayerType.Ellipse | LayerType.Rectangle | LayerType.Text
 } | {
   mode: CanvasMode.Translating,
   current: Point
