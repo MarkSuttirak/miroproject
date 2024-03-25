@@ -4,8 +4,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 convex<br>
 @clerk/nextjs<br>
 @liveblocks/client<br>
-@liveblocks/react
-nanoid
+@liveblocks/react<br>
+nanoid<br>
+perfect-freehand
 
 ## Getting Started
 
