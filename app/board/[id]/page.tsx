@@ -10,9 +10,6 @@ interface BoardIdProps {
 }
 
 const BoardId = ({params} : BoardIdProps) => {
-
-
-
   return (
     <div style={{ position: 'fixed', inset: 0 }}>
       <Tldraw persistenceKey={params.id} sessionId={params.id}/>
