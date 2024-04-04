@@ -1,6 +1,7 @@
-import { Room } from "@/components/room"
-import Canvas from "./_components/canvas"
-import { Loading } from "@/components/loading"
+"use client"
+
+import { Tldraw, useEditor } from 'tldraw'
+import 'tldraw/tldraw.css'
 
 interface BoardIdProps {
   params: {
@@ -9,12 +10,13 @@ interface BoardIdProps {
 }
 
 const BoardId = ({params} : BoardIdProps) => {
+
+
+
   return (
-    <Room roomId={params.id} fallBack={<Loading />}>
-      <div className="h-screen fade-in">
-        <Canvas boardId={params.id}/>
-      </div>
-    </Room>
+    <div style={{ position: 'fixed', inset: 0 }}>
+      <Tldraw persistenceKey={params.id} sessionId={params.id}/>
+    </div>
   )
 }
 

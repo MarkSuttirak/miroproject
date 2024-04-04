@@ -35,7 +35,8 @@
     "react-contenteditable": "^3.3.7",
     "react-dom": "^18",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tldraw": "^2.0.2"
   },
   "devDependencies": {
     "@types/node": "^20",
