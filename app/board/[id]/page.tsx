@@ -21,7 +21,7 @@ const BoardId = ({params} : BoardIdProps) => {
 
   return (
     <div style={{ position: 'fixed', inset: 0 }}>
-      <div className='fixed z-[999] right-0 top-[40%] bg-[#edf0f2] rounded-l-lg px-4 py-3 text-sm'>
+      <div className='fixed z-[999] left-0 top-[30%] bg-[#edf0f2] rounded-r-lg px-4 py-3 text-sm'>
         <button className='flex items-center justify-between w-full gap-x-2' onClick={() => setIsLibraryOpen(!isLibraryOpen)}>
           Library
           {isLibraryOpen ? <ChevronUp className='w-5 h-5'/> : <ChevronDown className='w-5 h-5'/>}
