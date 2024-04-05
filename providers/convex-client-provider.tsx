@@ -9,7 +9,7 @@ interface ConvexProviderProps {
     children: React.ReactNode
 }
 
-const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!)
+const convex = new ConvexReactClient("https://aromatic-iguana-546.convex.cloud")
 
 export default function ConvexClientProvider({children} : ConvexProviderProps){
     return (
