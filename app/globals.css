@@ -16,6 +16,17 @@ code {
     monospace;
 }
 
+@font-face {
+  font-family: 'Cal Sans';
+  src: url('../public/fonts/Cal sans/CalSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+.cal-sans {
+  font-family:'Cal Sans'
+}
+
 .fade-in {
   animation:fade-in 600ms;
 }
