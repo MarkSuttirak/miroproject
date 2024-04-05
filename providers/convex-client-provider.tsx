@@ -9,11 +9,11 @@ interface ConvexProviderProps {
     children: React.ReactNode
 }
 
-const convex = new ConvexReactClient("https://aromatic-iguana-546.convex.cloud")
+const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!)
 
 export default function ConvexClientProvider({children} : ConvexProviderProps){
     return (
-        <ClerkProvider publishableKey="pk_test_ZmFuY3ktbGlnZXItMzMuY2xlcmsuYWNjb3VudHMuZGV2JA">
+        <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!}>
           <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
 
             <Authenticated>
