@@ -4,7 +4,6 @@ import { ChangeEvent, useState } from "react"
 import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import usePathname from 'next/link'
 
 const Searchbar = () => {
   const [searchResult, setSearchResult] = useState<string>("")
@@ -12,10 +11,6 @@ const Searchbar = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchResult(e.target.value)
-  }
-
-  const handleEnter = (e: KeyboardEvent) => {
-    e.key === "Enter" && usePathname({href: searchLink})
   }
 
   return (

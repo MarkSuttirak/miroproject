@@ -26,7 +26,7 @@ const SearchPage = ({ params } : SearchResultProps) => {
   return (
     <section className="flex flex-col gap-y-8">
       <div className="flex flex-col gap-y-2">
-        <h1 className="dashboard-title">Search results of '{params.result}'</h1>
+        <h1 className="dashboard-title">Search results of {params.result}</h1>
 
         {filterData?.length !== 0 && 
           <h3 className="text-lg">Found {filterData?.length} {filterData?.length === 1 ? "result" : "results"}</h3>
