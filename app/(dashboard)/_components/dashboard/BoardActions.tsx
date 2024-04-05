@@ -7,8 +7,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { DropdownMenuContentProps } from "@radix-ui/react-dropdown-menu"
-import UpdateBoardDialog from "./update-board-dialog"
-import DeleteBoardDialog from "./delete-board-dialog"
+import UpdateBoardDialog from "./UpdateBoardDialog"
+import DeleteBoardDialog from "./DeleteBoardDialog"
 
 interface ActionsProps {
   side?: DropdownMenuContentProps["side"]

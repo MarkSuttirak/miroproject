@@ -3,8 +3,8 @@
 import { api } from "@/convex/_generated/api"
 import { useMutation, useQuery } from "convex/react"
 import { useOrganization } from "@clerk/nextjs"
-import BoardCard from "../../_components/dashboard/board-card"
-import { Loading } from "@/components/loading"
+import BoardCard from "../../_components/dashboard/BoardCard"
+import { Loading } from "@/components/Loading"
 
 interface SearchResultProps {
   params: {

@@ -4,9 +4,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { api } from "@/convex/_generated/api"
 import { useQuery } from "convex/react"
-import { Loading } from "@/components/loading"
+import { Loading } from "@/components/Loading"
 import { useOrganization } from "@clerk/nextjs"
-import BoardCard from "../_components/dashboard/board-card"
+import BoardCard from "../_components/dashboard/BoardCard"
 import { useCreateBoard } from "@/hooks/use-create-board"
 
 const Favourites = () => {

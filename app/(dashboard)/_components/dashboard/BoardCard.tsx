@@ -1,6 +1,6 @@
 "use client"
 
-import BoardActions from "@/app/(dashboard)/_components/dashboard/board-actions"
+import BoardActions from "@/app/(dashboard)/_components/dashboard/BoardActions"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"  
 import { useAuth } from "@clerk/nextjs"
 import { Heart, MoreHorizontal } from "lucide-react"

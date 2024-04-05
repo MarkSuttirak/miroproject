@@ -2,11 +2,11 @@
 
 import { api } from "@/convex/_generated/api"
 import { useMutation, useQuery } from "convex/react"
-import { Loading } from "@/components/loading"
+import { Loading } from "@/components/Loading"
 import { useOrganization } from "@clerk/nextjs"
-import BoardCard from "./_components/dashboard/board-card"
-import EmptyOrg from "./_components/dashboard/empty-org"
-import CreateBoardDialog from "./_components/dashboard/create-board-dialog"
+import BoardCard from "./_components/dashboard/BoardCard"
+import EmptyOrg from "./_components/dashboard/EmptyOrg"
+import CreateBoardDialog from "./_components/dashboard/CreateBoardDialog"
 
 const Board = () => {
   const data = useQuery(api.board.get)

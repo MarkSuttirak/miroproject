@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { PlusCircle } from "lucide-react"
 import { useCreateBoard } from "@/hooks/use-create-board"
-import BoardDialog from "@/components/board-dialog"
+import BoardDialog from "@/components/BoardDialog"
   
 const CreateBoardDialog = () => {
   const [openDialog, setOpenDialog] = useState(false)

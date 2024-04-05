@@ -10,7 +10,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import Sidebar from "../sidebar"
-import Searchbar from "./searchbar"
+import Searchbar from "./Searchbar"
 import { useState } from "react"
 import { Menu } from "lucide-react"
 

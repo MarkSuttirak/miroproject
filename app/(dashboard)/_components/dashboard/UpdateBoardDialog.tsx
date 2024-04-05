@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react"
 import { useUpdateBoard } from "@/hooks/use-update-board"
-import BoardDialog from "@/components/board-dialog"
+import BoardDialog from "@/components/BoardDialog"
 import { api } from "@/convex/_generated/api"
 import { Edit } from "lucide-react"
 import { useQuery } from "convex/react"

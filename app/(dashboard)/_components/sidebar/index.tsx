@@ -1,10 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import OrgList from "./org-list"
+import OrgList from "./OrgList"
 import Link from "next/link"
 import { boardMenus, orgMenus } from "../../_data/sidebar-menus"
-import MenuLink from "./menu-link"
+import { MenuItems } from "@/components/MenuLink"
 import { usePathname } from 'next/navigation'
 import { cn } from "@/lib/utils"
 
@@ -21,21 +21,6 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
     setActiveMenu(pathname)
   }, [pathname])
 
-  const MenuItems = ({ menus } : { menus: any[] }) => {
-    return <>
-      {menus.map(menu => (
-        <MenuLink
-          key={menu.title} 
-          link={menu.link} 
-          active={activeMenu} 
-          setActive={setActiveMenu} 
-          icon={menu.icon}
-          title={menu.title}
-        />
-      ))}
-    </>
-  }
-
   return (
     <div 
       className={
@@ -44,7 +29,10 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
       }
     >
       <Link href="/">
-        <h1 className="text-2xl font-bold mb-2 text-center">zaviago.com</h1>
+        <h2 className="cal-sans text-[17px] font-semibold">
+          zaviago
+          <span className="text-[13px]">.com</span>
+        </h2>
       </Link>
 
       <section>
@@ -52,7 +40,7 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
           <h2 className="px-2 text-lg font-semibold">Organizations</h2>
 
           <OrgList />
-          <MenuItems menus={orgMenus}/>
+          <MenuItems menus={orgMenus} active={activeMenu} setActive={setActiveMenu}/>
         </div>
       </section>
 
@@ -60,7 +48,7 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
         <div className="flex flex-col gap-y-2">
           <h2 className="px-2 text-lg font-semibold">Boards</h2>
 
-          <MenuItems menus={boardMenus}/>
+          <MenuItems menus={boardMenus} active={activeMenu} setActive={setActiveMenu}/>
         </div>
       </section>
     </div>

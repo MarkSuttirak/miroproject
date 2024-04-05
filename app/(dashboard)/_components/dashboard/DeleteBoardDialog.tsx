@@ -1,4 +1,4 @@
-import BoardDialog from "@/components/board-dialog" 
+import BoardDialog from "@/components/BoardDialog" 
 import { useDeleteBoard } from "@/hooks/use-delete-board"
 import { Trash2 } from "lucide-react"
 import { useState } from "react"
