@@ -1,7 +1,9 @@
 import { Plus, Clipboard, Hotel, Settings, Star, Users } from "lucide-react"
 import { SidebarMenuProps } from "@/types"
+import { Icons } from "@/components/Icons"
 
 const iconClassName = "w-4 h-4 stroke-[1.5] text-darkergray"
+const iconTemplateClassName = "drop-shadow-icon-template"
 
 export const orgMenus: SidebarMenuProps[] = [
   {
@@ -23,19 +25,26 @@ export const orgMenus: SidebarMenuProps[] = [
   // }
 ]
 
-export const boardMenus: SidebarMenuProps[] = [
-  {
-    title:"Team boards",
-    icon:<Clipboard className={iconClassName}/>,
-    link:'/'
-  },
-]
-
 export const templateMenus: SidebarMenuProps[] = [
   {
-    title:"Team boards",
-    icon:<Clipboard className={iconClassName}/>,
-    link:'/'
+    title:"All Templates",
+    icon:<Icons.allTemplates className={iconTemplateClassName}/>,
+    link:'/templates/all'
+  },
+  {
+    title:"Whiteboarding",
+    icon:<Icons.allTemplates className={iconTemplateClassName}/>,
+    link:'/whiteboarding'
+  },
+  {
+    title:"Design",
+    icon:<Icons.designTemplates className={iconTemplateClassName}/>,
+    link:'/design'
+  },
+  {
+    title:"Presentation",
+    icon:<Icons.presentation className={iconTemplateClassName}/>,
+    link:'/presentation'
   },
 ]
 

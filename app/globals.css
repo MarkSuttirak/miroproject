@@ -29,7 +29,7 @@ code {
 }
 
 .main-dashboard {
-  @apply lg:ml-[256px] p-10 mt-[72px]
+  @apply lg:ml-[256px] p-10 mt-[53px]
 }
 
 .sidebar-btn {

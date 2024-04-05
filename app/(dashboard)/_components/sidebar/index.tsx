@@ -2,12 +2,15 @@
 
 import { useEffect, useState } from "react"
 import OrgList from "./OrgList"
-import Link from "next/link"
-import { boardMenus, navigationMenus, orgMenus } from "../../_data/sidebar-menus"
+import { templateMenus, navigationMenus, orgMenus } from "../../_data/sidebar-menus"
 import { MenuItems } from "@/components/MenuLink"
 import { usePathname, useRouter } from 'next/navigation'
 import { cn } from "@/lib/utils"
 import { OpenMobileSidebarProps } from "@/types"
+import whiteboardIcon from "@/public/whiteboard-icon.svg"
+import Image from "next/image"
+import { Separator } from "@/components/ui/separator"
+import { Icons } from "@/components/Icons"
 
 const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => {
   const pathname = usePathname()
@@ -20,39 +23,51 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
   return (
     <div 
       className={
-        cn("-translate-x-full lg:translate-x-0 h-full flex flex-col gap-y-6 w-[256px] border-r border-r-lightergray fixed left-0 top-0 z-[49] px-3 pt-[18px]", 
+        cn("-translate-x-full lg:translate-x-0 h-full flex flex-col w-[256px] border-r border-r-lightergray fixed left-0 top-0 z-[49] pt-[18px]", 
         {"translate-x-0": isSidebarOpen})
       }
     >
-      <Link href="/">
-        <h2 className="cal-sans text-[17px] font-semibold">
-          zaviago
-          <span className="text-[13px]">.com</span>
-        </h2>
-      </Link>
-
-      <div className="flex flex-col">
-        <MenuItems menus={navigationMenus} active={activeMenu} setActive={setActiveMenu}/>
-      </div>
-
-      <section className="px-1">
-        <div className="flex flex-col">
-          <h2 className="text-sm py-3 text-lightgray font-medium">Organizations</h2>
-
-          <OrgList />
-
-          <div className="flex flex-col gap-y-2">
-            <MenuItems menus={orgMenus} active={activeMenu} setActive={setActiveMenu}/>
+      <section className="flex flex-col gap-y-7">
+        <section className="group flex items-center gap-x-2 relative px-3.5">
+          <Icons.whiteboardIcon className="min-w-9 min-h-9 z-[99] drop-shadow-md" />
+          <div>
+            <h2 className="cal-sans text-[17px] font-semibold">
+              zaviago
+              <span className="text-[13px]">.com</span>
+            </h2>
+            <p className="text-[11px] font-medium tracking-[-0.33px] text-[#5A5A5A] -mt-1">{window.location.hostname}</p>
           </div>
+
+          <div className="w-8 h-8 absolute top-2.5 group-hover:top-3.5 transition-all rounded-[5px] left-4 bg-[#C9C9C929] border border-[#ACACAC0F] drop-shadow-md" />
+        </section>
+
+        <div className="flex flex-col px-3">
+          <MenuItems menus={navigationMenus} active={activeMenu} setActive={setActiveMenu}/>
         </div>
       </section>
 
-      <section className="px-1">
-        <div className="flex flex-col">
-          <h2 className="text-sm py-3 text-lightgray font-medium">Templates</h2>
+      <Separator className="bg-lightergray my-3"/>
 
-          <MenuItems menus={boardMenus} active={activeMenu} setActive={setActiveMenu}/>
-        </div>
+      <section className="flex flex-col gap-y-7">
+        <section className="px-4">
+          <div className="flex flex-col">
+            <h2 className="text-sm py-3 text-lightgray font-medium">Organizations</h2>
+
+            <OrgList />
+
+            <div className="flex flex-col gap-y-2">
+              <MenuItems menus={orgMenus} active={activeMenu} setActive={setActiveMenu}/>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4">
+          <div className="flex flex-col">
+            <h2 className="text-sm py-3 text-lightgray font-medium">Templates</h2>
+
+            <MenuItems menus={templateMenus} active={activeMenu} setActive={setActiveMenu}/>
+          </div>
+        </section>
       </section>
     </div>
   )

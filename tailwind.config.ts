@@ -80,6 +80,9 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 600ms"
       },
+      dropShadow: {
+        "icon-template": "0 2px 8.6px #00000036"
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
