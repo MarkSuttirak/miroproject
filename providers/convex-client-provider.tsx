@@ -13,7 +13,7 @@ const convex = new ConvexReactClient("https://aromatic-iguana-546.convex.cloud")
 
 export default function ConvexClientProvider({children} : ConvexProviderProps){
     return (
-        <ClerkProvider>
+        <ClerkProvider publishableKey="pk_test_ZmFuY3ktbGlnZXItMzMuY2xlcmsuYWNjb3VudHMuZGV2JA">
           <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
 
             <Authenticated>
