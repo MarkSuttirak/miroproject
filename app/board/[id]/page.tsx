@@ -18,6 +18,7 @@ interface BoardIdProps {
 const BoardId = ({params} : BoardIdProps) => {
 
   const [isLibraryOpen, setIsLibraryOpen] = useState(false)
+  const libraryList = [templateOne, templateTwo, templateThree]
 
   return (
     <div style={{ position: 'fixed', inset: 0 }}>
@@ -29,15 +30,11 @@ const BoardId = ({params} : BoardIdProps) => {
 
         {isLibraryOpen && (
           <ul className='flex flex-col gap-y-3 mt-4'>
-            <ol>
-              <Image src={templateOne} height={100} width={100} alt={templateOne}/>
-            </ol>
-            <ol>
-              <Image src={templateTwo} height={100} width={100} alt="TEST"/>
-            </ol>
-            <ol>
-              <Image src={templateThree} height={100} width={100} alt="TEST"/>
-            </ol>
+            {libraryList.map((list: string) => (
+              <li key={list}>
+                <Image src={list} height={100} width={100} alt={list}/>
+              </li>
+            ))}
           </ul>
         )}
       </div>
