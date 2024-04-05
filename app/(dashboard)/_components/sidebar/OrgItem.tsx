@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import { useOrganizationList, useOrganization } from "@clerk/nextjs"
-import { cn } from "@/lib/utils"
 import { Check } from "lucide-react"
 import { toast } from "@/components/ui/use-toast"
 
