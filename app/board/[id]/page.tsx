@@ -3,9 +3,10 @@
 import { ChevronDown, ChevronRight, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
 import { Tldraw, useEditor } from 'tldraw'
-import templateOne from '../../../library-templates/templateOne.svg'
+import templateOne from '../../../library-templates/templateOne.png'
 import templateTwo from '../../../library-templates/templateTwo.svg'
 import templateThree from '../../../library-templates/templateThree.svg'
+import templateFour from '../../../library-templates/templateFour.svg'
 import 'tldraw/tldraw.css'
 import Image from 'next/image'
 
@@ -18,7 +19,7 @@ interface BoardIdProps {
 const BoardId = ({params} : BoardIdProps) => {
 
   const [isLibraryOpen, setIsLibraryOpen] = useState(false)
-  const libraryList = [templateOne, templateTwo, templateThree]
+  const libraryList = [templateOne, templateTwo, templateThree, templateFour]
 
   return (
     <div style={{ position: 'fixed', inset: 0 }}>

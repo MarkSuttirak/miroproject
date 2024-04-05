@@ -44,12 +44,12 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
       }
     >
       <Link href="/">
-        <h1 className="text-2xl font-bold mb-2 text-center">Miroproj</h1>
+        <h1 className="text-2xl font-bold mb-2 text-center">zaviago.com</h1>
       </Link>
 
       <section>
         <div className="flex flex-col gap-y-2">
-          <h2 className="px-2 text-lg font-semibold">Your organizations</h2>
+          <h2 className="px-2 text-lg font-semibold">Organizations</h2>
 
           <OrgList />
           <MenuItems menus={orgMenus}/>

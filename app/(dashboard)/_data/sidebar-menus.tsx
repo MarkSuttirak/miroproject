@@ -9,15 +9,15 @@ export interface SidebarMenuProps {
 
 export const orgMenus: SidebarMenuProps[] = [
   {
-    title:"Add organization",
+    title:"Create new",
     icon:<Plus />,
     link:'/organization/add'
   },
-  {
-    title:"Manage organization",
-    icon:<AppWindow />,
-    link:'/organization/manage'
-  }
+  // {
+  //   title:"Manage organization",
+  //   icon:<AppWindow />,
+  //   link:'/organization/manage'
+  // }
 ]
 
 export const boardMenus: SidebarMenuProps[] = [
