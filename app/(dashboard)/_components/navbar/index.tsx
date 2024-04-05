@@ -27,7 +27,7 @@ const Navbar = () => {
           <SheetTrigger onClick={() => setIsSidebarOpen(true)}>
             <Menu className="w-8 h-8"/>
           </SheetTrigger>
-          <SheetContent className="p-0 bg-transparent w-[280px]" side="left">
+          <SheetContent className="p-0 w-[256px]" side="left">
             <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
           </SheetContent>
         </Sheet>

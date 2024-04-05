@@ -12,3 +12,14 @@ export interface MenuItemsProps {
     active: string
     setActive: (link: string) => void
 }
+
+export interface OpenMobileSidebarProps {
+    isSidebarOpen?: boolean,
+    setIsSidebarOpen?: Function
+}
+
+export interface SidebarMenuProps {
+    title: string,
+    icon: React.ReactNode,
+    link: string
+}

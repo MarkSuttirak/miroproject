@@ -35,15 +35,15 @@ const OrgItem = ({id, name, imageUrl} : OrgItemProps) => {
         <Image 
           alt={name} 
           src={imageUrl} 
-          className='rounded-md'
-          width={24}
-          height={24}
+          className='rounded-sm w-4 h-4 object-cover'
+          width={16}
+          height={16}
         />
 
-        <p className="text-base">{name}</p>
+        <p className="text-[13px] font-medium">{name}</p>
       </div>
 
-      {isActive && <Check />}
+      {isActive && <Check className="w-4 h-4"/>}
     </div>
   )
 }

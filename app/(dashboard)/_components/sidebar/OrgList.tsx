@@ -13,7 +13,7 @@ const OrgList = () => {
     if (!userMemberships.data?.length) return null
 
     return (
-        <ul className="flex flex-col gap-y-2">
+        <ul className="flex flex-col">
             {userMemberships.data?.map(mem => (
                 <OrgItem
                   key={mem.organization.id}

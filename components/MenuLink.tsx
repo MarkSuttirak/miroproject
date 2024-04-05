@@ -14,11 +14,11 @@ export const MenuLink = ({link, active, setActive, icon, title, onClick} : MenuL
   return (
     <Link href={link}>
       <button 
-        className={cn("sidebar-btn", {"bg-white/25": active == link})}
+        className={cn("sidebar-btn", {"bg-zinc-100": active == link})}
         onClick={handleClickLink}
       >
         {icon}
-        <p className="text-base">{title}</p>
+        <p className="text-[13px] font-medium">{title}</p>
       </button>
     </Link>
   )

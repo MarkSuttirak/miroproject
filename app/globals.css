@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
 .fade-in {
   animation:fade-in 600ms;
 }
@@ -11,15 +25,15 @@
 }
 
 .navbar {
-  @apply p-4 bg-blue-400 flex items-center justify-between text-white fixed right-0 top-0 w-full lg:w-[calc(100%_-_280px)] z-[49] gap-x-4
+  @apply py-1 px-[19px] flex items-center justify-between fixed border-b border-b-lightergray right-0 top-0 w-full lg:w-[calc(100%_-_256px)] z-[49] h-[53px]
 }
 
 .main-dashboard {
-  @apply lg:ml-[280px] p-10 mt-[72px]
+  @apply lg:ml-[256px] p-10 mt-[72px]
 }
 
 .sidebar-btn {
-  @apply flex items-center text-white hover:bg-white/25 rounded-md py-2 px-3 gap-x-2 w-full transition-all cursor-pointer text-sm
+  @apply flex items-center hover:bg-zinc-100 rounded-md py-2 px-4 gap-x-2 w-full transition-all cursor-pointer text-sm text-black-one
 }
 
 @layer base {

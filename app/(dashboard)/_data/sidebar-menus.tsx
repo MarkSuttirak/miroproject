@@ -1,18 +1,21 @@
-import { ReactNode } from "react"
-import { AppWindow, Plus, Clipboard, FolderHeart } from "lucide-react"
+import { Plus, Clipboard, Hotel, Settings, Star, Users } from "lucide-react"
+import { SidebarMenuProps } from "@/types"
 
-export interface SidebarMenuProps {
-    title: string,
-    icon: ReactNode,
-    link: string
-}
+const iconClassName = "w-4 h-4 stroke-[1.5] text-darkergray"
 
 export const orgMenus: SidebarMenuProps[] = [
   {
     title:"Create new",
-    icon:<Plus />,
+    icon:<Plus className={iconClassName}/>,
     link:'/organization/add'
   },
+  {
+    title:"Favorite boards",
+    icon:<Star className={iconClassName}/>,
+    link:'/favourites'
+  },
+
+  /* May be used later, so I commented it */
   // {
   //   title:"Manage organization",
   //   icon:<AppWindow />,
@@ -23,12 +26,33 @@ export const orgMenus: SidebarMenuProps[] = [
 export const boardMenus: SidebarMenuProps[] = [
   {
     title:"Team boards",
-    icon:<Clipboard />,
+    icon:<Clipboard className={iconClassName}/>,
     link:'/'
   },
+]
+
+export const templateMenus: SidebarMenuProps[] = [
   {
-    title:"Favourite boards",
-    icon:<FolderHeart />,
-    link:'/favourites'
+    title:"Team boards",
+    icon:<Clipboard className={iconClassName}/>,
+    link:'/'
   },
+]
+
+export const navigationMenus: SidebarMenuProps[] = [
+  {
+    title:"Dashboard",
+    icon:<Hotel className={iconClassName}/>,
+    link:'https://zaviago-dashboard.vercel.app/dashboard/app'
+  },
+  {
+    title:"Settings",
+    icon:<Settings className={iconClassName}/>,
+    link:'https://zaviago-dashboard.vercel.app/dashboard/settings/account'
+  },
+  {
+    title:"Teams",
+    icon:<Users className={iconClassName}/>,
+    link:'https://zaviago-dashboard.vercel.app/dashboard/settings/account'
+  }
 ]

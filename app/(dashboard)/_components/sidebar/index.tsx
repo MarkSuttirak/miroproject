@@ -3,15 +3,11 @@
 import { useEffect, useState } from "react"
 import OrgList from "./OrgList"
 import Link from "next/link"
-import { boardMenus, orgMenus } from "../../_data/sidebar-menus"
+import { boardMenus, navigationMenus, orgMenus } from "../../_data/sidebar-menus"
 import { MenuItems } from "@/components/MenuLink"
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { cn } from "@/lib/utils"
-
-interface OpenMobileSidebarProps {
-  isSidebarOpen?: boolean,
-  setIsSidebarOpen?: Function
-}
+import { OpenMobileSidebarProps } from "@/types"
 
 const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => {
   const pathname = usePathname()
@@ -24,7 +20,7 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
   return (
     <div 
       className={
-        cn("-translate-x-full lg:translate-x-0 h-full flex flex-col gap-y-6 w-[280px] text-white bg-blue-600 fixed left-0 top-0 z-[49] p-4", 
+        cn("-translate-x-full lg:translate-x-0 h-full flex flex-col gap-y-6 w-[256px] border-r border-r-lightergray fixed left-0 top-0 z-[49] px-3 pt-[18px]", 
         {"translate-x-0": isSidebarOpen})
       }
     >
@@ -35,18 +31,25 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
         </h2>
       </Link>
 
-      <section>
-        <div className="flex flex-col gap-y-2">
-          <h2 className="px-2 text-lg font-semibold">Organizations</h2>
+      <div className="flex flex-col">
+        <MenuItems menus={navigationMenus} active={activeMenu} setActive={setActiveMenu}/>
+      </div>
+
+      <section className="px-1">
+        <div className="flex flex-col">
+          <h2 className="text-sm py-3 text-lightgray font-medium">Organizations</h2>
 
           <OrgList />
-          <MenuItems menus={orgMenus} active={activeMenu} setActive={setActiveMenu}/>
+
+          <div className="flex flex-col gap-y-2">
+            <MenuItems menus={orgMenus} active={activeMenu} setActive={setActiveMenu}/>
+          </div>
         </div>
       </section>
 
-      <section>
-        <div className="flex flex-col gap-y-2">
-          <h2 className="px-2 text-lg font-semibold">Boards</h2>
+      <section className="px-1">
+        <div className="flex flex-col">
+          <h2 className="text-sm py-3 text-lightgray font-medium">Templates</h2>
 
           <MenuItems menus={boardMenus} active={activeMenu} setActive={setActiveMenu}/>
         </div>
