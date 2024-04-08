@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useOrganizationList, useOrganization } from "@clerk/nextjs"
 import { Check } from "lucide-react"
 import { toast } from "@/components/ui/use-toast"
+import { useRouter } from "next/navigation"
 
 interface OrgItemProps {
   id: string
@@ -15,17 +16,19 @@ const OrgItem = ({id, name, imageUrl} : OrgItemProps) => {
   const { organization } = useOrganization()
   const { setActive } = useOrganizationList()
   const isActive = organization?.id === id
+  const router = useRouter()
 
   const onClick = () => {
-    if (!setActive) return;
+    if (!setActive){
+      toast({ title: 'Failed to switch the team, please try again.' })
+      return
+    };
 
     setActive({ organization: id })
-      .then(() => {
-        toast({ title: `Switched the team to ${name}` })
-      })
-      .catch(() => {
-        toast({ title: 'Failed to switch the team, please try again.' })
-      })
+    .then(() => {
+      toast({ title: `Switched the team to ${name}` })
+      router.push("/")
+    })
   }
 
   return (
