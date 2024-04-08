@@ -44,7 +44,7 @@ code {
 }
 
 .sidebar-btn {
-  @apply flex items-center hover:bg-zinc-100 rounded-md py-2 px-4 gap-x-2 w-full transition-all cursor-pointer text-sm text-black-one
+  @apply flex items-center h-9 hover:bg-zinc-100 rounded-md py-2 px-4 gap-x-2 w-full transition-all cursor-pointer text-sm text-black-one
 }
 
 @layer base {
