@@ -1,7 +1,7 @@
 import { authMiddleware } from "@clerk/nextjs";
  
 export default authMiddleware({
-    publicRoutes: ['https://miroproject.vercel.app/']
+    publicRoutes: ['/']
 });
 
 export const config = {
