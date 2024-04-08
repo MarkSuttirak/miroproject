@@ -4,8 +4,6 @@ import ConvexClientProvider from "@/providers/convex-client-provider";
 import { Toaster } from "@/components/ui/toaster";
 import localFont from 'next/font/local'
 import { Inter } from 'next/font/google'
-import { Suspense } from "react";
-import { Loading } from "@/components/Loading";
 
 export const inter = Inter({
   subsets: ['latin'],
@@ -41,12 +39,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Suspense fallback={<Loading />}>
-          <ConvexClientProvider>
-            <Toaster />
-            {children}
-          </ConvexClientProvider>
-        </Suspense>
+        <ConvexClientProvider>
+          <Toaster />
+          {children}
+        </ConvexClientProvider>
       </body>
     </html>
   );
