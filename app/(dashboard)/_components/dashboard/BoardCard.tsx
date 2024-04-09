@@ -10,16 +10,7 @@ import { useMutation } from "convex/react"
 import { toast } from "@/components/ui/use-toast"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
-
-interface BoardCardProps {
-  title: string
-  id?: any
-  imageUrl: string
-  authorId: string
-  authorName: string
-  isFavourite: boolean
-  creationTime: string
-}
+import { BoardCardProps } from "@/types"
 
 const BoardCard = ({
   title, 

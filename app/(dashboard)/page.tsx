@@ -8,6 +8,7 @@ import BoardCard from "./_components/dashboard/BoardCard"
 import EmptyOrg from "./_components/dashboard/EmptyOrg"
 import CreateBoardDialog from "./_components/dashboard/CreateBoardDialog"
 import { formatDate } from "@/lib/utils"
+import BoardCardList from "./_components/dashboard/BoardCardList"
 
 const Board = () => {
   const data = useQuery(api.board.get)
@@ -43,20 +44,7 @@ const Board = () => {
                   <p>Create your first board to get started.</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                  {filterData?.map(d => (
-                    <BoardCard 
-                      imageUrl={d.imageUrl} 
-                      title={d.title} 
-                      key={d._id} 
-                      id={d._id} 
-                      authorName={d.authorName} 
-                      authorId={d.authorId}
-                      isFavourite={d.favourite}
-                      creationTime={formatDate(d._creationTime)}
-                    />
-                  ))}
-                </div>
+                <BoardCardList data={filterData} type="list"/>
               )}
             </>
           )}

@@ -23,3 +23,13 @@ export interface SidebarMenuProps {
     icon: React.ReactNode,
     link: string
 }
+
+export interface BoardCardProps {
+    title: string
+    id?: any
+    imageUrl: string
+    authorId: string
+    authorName: string
+    isFavourite: boolean
+    creationTime: string
+}
