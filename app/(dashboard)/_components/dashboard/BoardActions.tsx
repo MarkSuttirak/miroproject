@@ -16,6 +16,7 @@ interface ActionsProps {
   children: React.ReactNode
   id?: any
   title?: string
+  className?: string
 }
 
 const BoardActions = ({
@@ -23,11 +24,12 @@ const BoardActions = ({
   sideOffset,
   children,
   id,
-  title
+  title,
+  className
 } : ActionsProps) => {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger className={className}>
         {children}
       </DropdownMenuTrigger>
 

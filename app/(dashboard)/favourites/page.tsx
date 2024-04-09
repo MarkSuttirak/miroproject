@@ -8,6 +8,7 @@ import { Loading } from "@/components/Loading"
 import { useOrganization } from "@clerk/nextjs"
 import BoardCard from "../_components/dashboard/BoardCard"
 import { useCreateBoard } from "@/hooks/use-create-board"
+import { formatDate } from "@/lib/utils"
 
 const Favourites = () => {
   const data = useQuery(api.board.get)
@@ -22,15 +23,15 @@ const Favourites = () => {
 
   return (
     <section className="flex flex-col gap-y-8">
-      <h1 className="dashboard-title">Favourite boards</h1>
+      <h1 className="dashboard-title">Favorite boards</h1>
 
       {filterData?.length === 0 ? (
         <div className="flex flex-col items-center h-[60vh] w-full justify-center gap-y-4">
-          <h1 className="dashboard-title">No favourite boards</h1>
-          <p>Try favouriting your boards</p>
+          <h1 className="dashboard-title">No favorite boards</h1>
+          <p>Your favorite boards will appear here. Try favoriting your boards.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filterData?.map(d => (
             <BoardCard 
               imageUrl={d.imageUrl} 
@@ -40,6 +41,7 @@ const Favourites = () => {
               authorName={d.authorName} 
               authorId={d.authorId}
               isFavourite={d.favourite}
+              creationTime={formatDate(d._creationTime)}
             />
           ))}
         </div>

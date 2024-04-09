@@ -7,6 +7,7 @@ import { useOrganization } from "@clerk/nextjs"
 import BoardCard from "./_components/dashboard/BoardCard"
 import EmptyOrg from "./_components/dashboard/EmptyOrg"
 import CreateBoardDialog from "./_components/dashboard/CreateBoardDialog"
+import { formatDate } from "@/lib/utils"
 
 const Board = () => {
   const data = useQuery(api.board.get)
@@ -27,7 +28,7 @@ const Board = () => {
       ) : (
         <section className="flex flex-col gap-y-8">
           <div className="flex items-center justify-between">
-            <h1 className="dashboard-title">My boards</h1>
+            <h1 className="dashboard-title">{orgName}&#39;s boards</h1>
 
             <CreateBoardDialog />
           </div>
@@ -42,7 +43,7 @@ const Board = () => {
                   <p>Create your first board to get started.</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                   {filterData?.map(d => (
                     <BoardCard 
                       imageUrl={d.imageUrl} 
@@ -52,6 +53,7 @@ const Board = () => {
                       authorName={d.authorName} 
                       authorId={d.authorId}
                       isFavourite={d.favourite}
+                      creationTime={formatDate(d._creationTime)}
                     />
                   ))}
                 </div>

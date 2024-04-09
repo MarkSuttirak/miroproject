@@ -28,7 +28,7 @@ const config = {
         lightergray: "#F4F4F4",
         darkergray: "#18181B",
         black: {
-          default: "#000000",
+          DEFAULT: "#000000",
           one: "#0F172A"
         },
         primary: {

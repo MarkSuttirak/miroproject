@@ -24,6 +24,7 @@ const CreateBoardDialog = () => {
       isSubmitting={isCreating}
       openDialog={openDialog}
       setOpenDialog={setOpenDialog}
+      defaultValue=""
     />
   )
 }

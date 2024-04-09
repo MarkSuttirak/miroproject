@@ -47,8 +47,12 @@ const BoardDialog = ({
   }
 
   const handleSubmit = () => {
-    action !== "Delete" && ( title === "" ? setError(true) : setError(false) )
-    onSubmit && onSubmit(title, id)
+    if (title === "" && action !== "Delete"){
+      setError(true)
+    } else {
+      setError(false)
+      onSubmit(title, id)
+    }
   }
 
   const handleEnter = (e: KeyboardEvent) => e.key === "Enter" && handleSubmit()
@@ -69,7 +73,7 @@ const BoardDialog = ({
               className={`border outline-none ${error ? 'border-red-500' : ''}`} 
               onChange={handleChange}
               onKeyDown={handleEnter}
-              defaultValue={action === "Update" ? defaultValue : ""}
+              defaultValue={defaultValue}
               value={title}
             />
             {error && <p className="text-red-500 text-xs">The title cannot be empty</p>}
