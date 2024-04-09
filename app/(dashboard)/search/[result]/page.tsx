@@ -5,6 +5,7 @@ import { useMutation, useQuery } from "convex/react"
 import { useOrganization } from "@clerk/nextjs"
 import BoardCard from "../../_components/dashboard/BoardCard"
 import { Loading } from "@/components/Loading"
+import { formatDate } from "@/lib/utils"
 
 interface SearchResultProps {
   params: {
@@ -43,7 +44,7 @@ const SearchPage = ({ params } : SearchResultProps) => {
               <p>Please try another search</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {filterData?.map(d => (
                 <BoardCard 
                   imageUrl={d.imageUrl} 
@@ -53,6 +54,7 @@ const SearchPage = ({ params } : SearchResultProps) => {
                   authorName={d.authorName} 
                   authorId={d.authorId}
                   isFavourite={d.favourite}
+                  creationTime={formatDate(d._creationTime)}
                 />
               ))}
             </div>
