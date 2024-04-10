@@ -2,13 +2,14 @@
 
 import { ChevronDown, ChevronRight, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
-import { Tldraw, useEditor } from 'tldraw'
 import templateOne from '../../../library-templates/templateOne.png'
 import templateTwo from '../../../library-templates/templateTwo.svg'
 import templateThree from '../../../library-templates/templateThree.svg'
 import templateFour from '../../../library-templates/templateFour.svg'
 import 'tldraw/tldraw.css'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
+import { TLStore, useEditor } from 'tldraw'
 
 interface BoardIdProps {
   params: {
@@ -20,6 +21,7 @@ const BoardId = ({params} : BoardIdProps) => {
 
   const [isLibraryOpen, setIsLibraryOpen] = useState(false)
   const libraryList = [templateOne, templateTwo, templateThree, templateFour]
+  const Tldraw = dynamic(async () => (await import('tldraw')).Tldraw, { ssr: false })
 
   return (
     <div style={{ position: 'fixed', inset: 0 }}>
@@ -40,7 +42,7 @@ const BoardId = ({params} : BoardIdProps) => {
         )}
       </div>
 
-      <Tldraw persistenceKey={params.id} sessionId={params.id}/>
+      <Tldraw persistenceKey={params.id} />
     </div>
   )
 }

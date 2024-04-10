@@ -5,16 +5,14 @@ import { useQuery } from "convex/react"
 import { Loading } from "@/components/Loading"
 import { useOrganization } from "@clerk/nextjs"
 import EmptyOrg from "./_components/dashboard/EmptyOrg"
-import CreateBoardDialog from "./_components/dashboard/CreateBoardDialog"
 import BoardCardList from "./_components/dashboard/BoardCardList"
-import { BoardCardType } from "@/types"
-import { ReactNode, useState } from "react"
-import { LayoutGrid, List, Settings2 } from "lucide-react"
-import { cn } from "@/lib/utils"
 import useDisplayBoards from "@/hooks/use-display-boards"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { Settings2 } from "lucide-react"
+import CreateBoardDialog from "./_components/dashboard/CreateBoardDialog"
+import { createWhiteboarding } from "./_data/create-whiteboarding"
 
 const Board = () => {
   const data = useQuery(api.board.get)
@@ -53,7 +51,13 @@ const Board = () => {
           </div>
 
           <header className="px-6 py-8 rounded-3xl" style={{background:"linear-gradient(180deg, #FFFFFF -72.08%, #FFFFFF -72.04%, #DDD5FF 224.77%)"}}>
-            <h1 className="text-[#3D3D3D] text-[19px] font-bold">วันนี้คุณต้องการทำอะไร</h1>
+            <h1 className="text-[#3D3D3D] text-[19px] font-bold mb-6">วันนี้คุณต้องการทำอะไร</h1>
+
+            <div className="flex items-center gap-x-6">
+              {createWhiteboarding.map((whiteboard) => (
+                <CreateBoardDialog trigger={whiteboard.trigger}/>
+              ))}
+            </div>
           </header>
 
           <main className="flex flex-col gap-y-6">

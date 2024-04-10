@@ -11,6 +11,7 @@ import { toast } from "@/components/ui/use-toast"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { BoardCardProps } from "@/types"
+import { useRouter } from "next/navigation"
 
 const BoardCard = ({
   title, 
@@ -26,6 +27,7 @@ const BoardCard = ({
   const { userId } = useAuth()
   const authorLabel = userId === authorId ? "You" : authorName
   const favourite = useMutation(api.board.favourite)
+  const router = useRouter()
 
   const setFavourite = () => {
     favourite({
@@ -71,22 +73,20 @@ const BoardCard = ({
       )}
 
       {type === "list" && (
-        <tr id={id}>
-          <td className="text-left p-4" width="10%">
-            <Link href={`/board/${id}`}>
-              <Image src={imageUrl} className="w-full" alt={title} width={100} height={100}/>
-            </Link>
-          </td>
-          <td className="text-left p-4 text-sm" width="30%">
-            <Link href={`/board/${id}`}>{title}</Link>
-          </td>
-          <td className="text-left p-4 text-sm" width="30%">{creationTime}</td>
-          <td className="text-center p-4 text-sm">
+        <tr id={id} className="hover:bg-lightergray rounded-md cursor-pointer">
+          <td className="text-center p-4 pl-0 text-sm rounded-l-lg" width="5%">
             <button onClick={setFavourite}>
-              <Star fill={isFavourite ? "#FFC700" : "transparent"} stroke={isFavourite ? "#FFC700" : "black"}/>
+              <Star fill={isFavourite ? "#FFC700" : "transparent"} stroke={isFavourite ? "#FFC700" : "#71717A"} strokeWidth={1.5}/>
             </button>
           </td>
-          <td className="text-center p-4">
+          <td className="text-left p-4 pl-0" width="10%" onClick={() => router.push(`/board/${id}`)}>
+            <Image src={imageUrl} className="w-full bg-lightergray p-3 h-20 rounded-lg" alt={title} width={100} height={100}/>
+          </td>
+          <td className="text-left p-4 text-sm font-semibold" width="30%" onClick={() => router.push(`/board/${id}`)}>
+            {title}
+          </td>
+          <td className="text-left p-4 text-sm text-muted-foreground" width="30%" onClick={() => router.push(`/board/${id}`)}>Created {creationTime}</td>
+          <td className="text-right p-4 rounded-r-lg">
             <BoardActions
               id={id}
               side="bottom"

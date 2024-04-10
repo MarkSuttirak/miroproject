@@ -27,15 +27,6 @@ const BoardCardList = ({ data, type } : BoardCardListProps) => {
 
       {type === "list" && (
         <table>
-          <thead>
-            <tr>
-              <th className="text-left p-4">Image</th>
-              <th className="text-left p-4">Title</th>
-              <th className="text-left p-4">Created</th>
-              <th className="text-center p-4">Favorite</th>
-              <th className="text-center p-4">Actions</th>
-            </tr>
-          </thead>
           <tbody>
             {data?.map(d => (
               <BoardCard 
