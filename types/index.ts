@@ -1,4 +1,4 @@
-export type BoardCardType = "grid" | "list"
+export type BoardCardType = "grid" | "list" | string
 
 export interface MenuLinkProps {
     link: string

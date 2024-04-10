@@ -10,27 +10,31 @@ type DisplayBoardBtns = {
 }
 
 const useDisplayBoards = () => {
+    const [dataDisplay, setDataDisplay] = useState<BoardCardType>(localStorage.getItem("data-display") || "grid")
 
-    const [dataDisplay, setDataDisplay] = useState<BoardCardType>("list")
+    const handleDisplay = (display: BoardCardType) => {
+      setDataDisplay(display)
+      localStorage.setItem("data-display", display)
+    }
 
     const displayBoardBtns: DisplayBoardBtns[] = [
         {
-          icon: <LayoutGrid />,
+          icon: <LayoutGrid className="h-4 w-4 stroke-[1.5]"/>,
           isActive: dataDisplay === "grid",
-          onClick: () => setDataDisplay("grid")
+          onClick: () => handleDisplay("grid")
         },
         {
-          icon: <List />,
+          icon: <List className="h-4 w-4 stroke-[1.5]"/>,
           isActive: dataDisplay === "list",
-          onClick: () => setDataDisplay("list")
+          onClick: () => handleDisplay("list")
         },
       ]
 
     const BoardBtns = () => {
       return (
-        <div className="flex gap-x-4 items-center">
-          {displayBoardBtns.map((btn) => (
-            <button onClick={btn.onClick} className={cn("p-2 rounded-md hover:bg-lightergray", {"bg-lightergray": btn.isActive})}>
+        <div className="flex gap-x-2 items-center">
+          {displayBoardBtns.map((btn, index) => (
+            <button key={index} onClick={btn.onClick} className={cn("p-1 rounded-md hover:bg-lightergray", {"bg-lightergray": btn.isActive})}>
              {btn.icon}
             </button>
           ))}

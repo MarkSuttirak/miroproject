@@ -21,7 +21,7 @@ export default function ConvexClientProvider({children} : ConvexProviderProps){
             </Authenticated>
 
             <AuthLoading>
-                <Loading />
+                <Loading isFullScreen={true}/>
             </AuthLoading>
 
           </ConvexProviderWithClerk>

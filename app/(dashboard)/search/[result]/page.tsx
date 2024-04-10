@@ -3,9 +3,9 @@
 import { api } from "@/convex/_generated/api"
 import { useMutation, useQuery } from "convex/react"
 import { useOrganization } from "@clerk/nextjs"
-import BoardCard from "../../_components/dashboard/BoardCard"
 import { Loading } from "@/components/Loading"
-import { formatDate } from "@/lib/utils"
+import useDisplayBoards from "@/hooks/use-display-boards"
+import BoardCardList from "../../_components/dashboard/BoardCardList"
 
 interface SearchResultProps {
   params: {
@@ -16,6 +16,7 @@ interface SearchResultProps {
 const SearchPage = ({ params } : SearchResultProps) => {
   const data = useQuery(api.board.get)
   const { organization } = useOrganization()
+  const { dataDisplay, BoardBtns } = useDisplayBoards()
 
   const orgName = organization?.name
 
@@ -27,10 +28,14 @@ const SearchPage = ({ params } : SearchResultProps) => {
   return (
     <section className="flex flex-col gap-y-8">
       <div className="flex flex-col gap-y-2">
-        <h1 className="dashboard-title">Search results of {params.result}</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="dashboard-title">Search results of {params.result}</h1>
+
+          <BoardBtns />
+        </div>
 
         {filterData?.length !== 0 && 
-          <h3 className="text-lg">Found {filterData?.length} {filterData?.length === 1 ? "result" : "results"}</h3>
+          <h3 className="text-base">Found {filterData?.length} {filterData?.length === 1 ? "result" : "results"}</h3>
         }
       </div>
 
@@ -44,20 +49,7 @@ const SearchPage = ({ params } : SearchResultProps) => {
               <p>Please try another search</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {filterData?.map(d => (
-                <BoardCard 
-                  imageUrl={d.imageUrl} 
-                  title={d.title} 
-                  key={d._id} 
-                  id={d._id} 
-                  authorName={d.authorName} 
-                  authorId={d.authorId}
-                  isFavourite={d.favourite}
-                  creationTime={formatDate(d._creationTime)}
-                />
-              ))}
-            </div>
+            <BoardCardList data={filterData!} type={dataDisplay}/>
           )}
         </>
       )}

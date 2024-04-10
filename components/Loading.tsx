@@ -1,11 +1,17 @@
-export const Loading = () => {
+import { cn } from "@/lib/utils"
+
+interface LoadingProps {
+  isFullScreen?: boolean
+}
+
+export const Loading = ({ isFullScreen } : LoadingProps) => {
 
   const bgGradient = {
     background:"linear-gradient(0deg, #2563EB, #FFFFFF)"
   }
 
   return (
-    <div className="h-screen w-full flex items-center justify-center flex-col gap-y-6">
+    <div className={cn("w-full flex items-center justify-center flex-col gap-y-6", {"h-screen": isFullScreen})}>
       <div className="animate-spin w-12 h-12 flex justify-center items-center rounded-full" style={bgGradient}>
         <div className="bg-white w-10 h-10 rounded-full" />
       </div>

@@ -7,7 +7,8 @@ import { Inter } from 'next/font/google'
 
 export const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700']
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-inter'
 })
 
 export const calsans = localFont({
@@ -25,7 +26,8 @@ export const sfPro = localFont({
       path:'../public/fonts/SF Pro/SFProTHDisplay_semibold.woff2',
       weight: '600'
     }
-  ]
+  ],
+  variable: '--font-sfpro'
 })
 
 export const metadata: Metadata = {
@@ -38,7 +40,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${sfPro.variable}`}>
         <ConvexClientProvider>
           <Toaster />
           {children}
