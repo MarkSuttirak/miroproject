@@ -1,3 +1,5 @@
+export type BoardCardType = "grid" | "list"
+
 export interface MenuLinkProps {
     link: string
     active: string
@@ -32,4 +34,10 @@ export interface BoardCardProps {
     authorName: string
     isFavourite: boolean
     creationTime: string
+    type: BoardCardType
 }
+
+export interface BoardCardListProps {
+    data: any[]
+    type: BoardCardType
+}  

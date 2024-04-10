@@ -19,8 +19,9 @@ const BoardCard = ({
   authorId,
   authorName,
   isFavourite,
-  creationTime
-} : BoardCardProps)  => {
+  creationTime,
+  type
+} : BoardCardProps) => {
 
   const { userId } = useAuth()
   const authorLabel = userId === authorId ? "You" : authorName
@@ -39,32 +40,63 @@ const BoardCard = ({
   }
 
   return (
-    <Card className="shadow-none border-none group relative">
-      <Link href={`/board/${id}`}>
-        <CardHeader className="pb-2 relative bg-lightergray rounded-xl p-[100px]">
-          <Image src={imageUrl} className="w-full" alt={title} width={100} height={100}/>
-        </CardHeader>
-      </Link>
-      <CardContent className="flex items-center justify-between">
-        <div>
-          <CardTitle className="text-sm overflow-hidden text-ellipsis">{title}</CardTitle>
-          <CardDescription className="text-[13px]">Created {creationTime}</CardDescription>
-        </div>
-        <div className="flex items-center gap-x-2">
-          <button className={cn("bg-black/50 p-2 rounded-md cursor-pointer absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity", {"opacity-100": isFavourite})} onClick={setFavourite}>
-            <Star fill={isFavourite ? "#FFC700" : "transparent"} stroke={isFavourite ? "#FFC700" : "white"}/>
-          </button>
+    <>
+      {type === "grid" && (
+        <Card className="shadow-none border-none group relative">
+          <Link href={`/board/${id}`}>
+            <CardHeader className="pb-2 relative bg-lightergray rounded-xl p-[100px]">
+              <Image src={imageUrl} className="w-full" alt={title} width={100} height={100}/>
+            </CardHeader>
+          </Link>
+          <CardContent className="flex items-center justify-between">
+            <div>
+              <CardTitle className="text-sm overflow-hidden text-ellipsis">{title}</CardTitle>
+              <CardDescription className="text-[13px]">Created {creationTime}</CardDescription>
+            </div>
+            <div className="flex items-center gap-x-2">
+              <button className={cn("bg-black/50 p-2 rounded-md absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity", {"opacity-100": isFavourite})} onClick={setFavourite}>
+                <Star fill={isFavourite ? "#FFC700" : "transparent"} stroke={isFavourite ? "#FFC700" : "white"}/>
+              </button>
+    
+              <BoardActions 
+                id={id}
+                side="bottom"
+                className="opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <MoreHorizontal className="rotate-90"/>
+              </BoardActions>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
-          <BoardActions 
-            id={id}
-            side="bottom"
-            className="opacity-0 group-hover:opacity-100 transition-opacity"
-          >
-            <MoreHorizontal className="rotate-90"/>
-          </BoardActions>
-        </div>
-      </CardContent>
-    </Card>
+      {type === "list" && (
+        <tr id={id}>
+          <td className="text-left p-4" width="10%">
+            <Link href={`/board/${id}`}>
+              <Image src={imageUrl} className="w-full" alt={title} width={100} height={100}/>
+            </Link>
+          </td>
+          <td className="text-left p-4 text-sm" width="30%">
+            <Link href={`/board/${id}`}>{title}</Link>
+          </td>
+          <td className="text-left p-4 text-sm" width="30%">{creationTime}</td>
+          <td className="text-center p-4 text-sm">
+            <button onClick={setFavourite}>
+              <Star fill={isFavourite ? "#FFC700" : "transparent"} stroke={isFavourite ? "#FFC700" : "black"}/>
+            </button>
+          </td>
+          <td className="text-center p-4">
+            <BoardActions
+              id={id}
+              side="bottom"
+            >
+              <MoreHorizontal className="rotate-90"/>
+            </BoardActions>
+          </td>
+        </tr>
+      )}
+    </>
   )
 }
 

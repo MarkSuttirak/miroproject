@@ -1,14 +1,17 @@
 "use client"
 
 import { api } from "@/convex/_generated/api"
-import { useMutation, useQuery } from "convex/react"
+import { useQuery } from "convex/react"
 import { Loading } from "@/components/Loading"
 import { useOrganization } from "@clerk/nextjs"
-import BoardCard from "./_components/dashboard/BoardCard"
 import EmptyOrg from "./_components/dashboard/EmptyOrg"
 import CreateBoardDialog from "./_components/dashboard/CreateBoardDialog"
-import { formatDate } from "@/lib/utils"
 import BoardCardList from "./_components/dashboard/BoardCardList"
+import { BoardCardType } from "@/types"
+import { ReactNode, useState } from "react"
+import { LayoutGrid, List } from "lucide-react"
+import { cn } from "@/lib/utils"
+import useDisplayBoards from "@/hooks/use-display-boards"
 
 const Board = () => {
   const data = useQuery(api.board.get)
@@ -19,6 +22,8 @@ const Board = () => {
   const filterData = data?.filter(org => 
     org.orgName === orgName
   )
+
+  const { dataDisplay, BoardBtns } = useDisplayBoards()
 
   return (
     <>
@@ -31,7 +36,11 @@ const Board = () => {
           <div className="flex items-center justify-between">
             <h1 className="dashboard-title">{orgName}&#39;s boards</h1>
 
-            <CreateBoardDialog />
+            <div className="flex gap-x-6 items-center">
+              <CreateBoardDialog />
+
+              <BoardBtns />
+            </div>
           </div>
 
           {data === undefined ? (
@@ -44,7 +53,7 @@ const Board = () => {
                   <p>Create your first board to get started.</p>
                 </div>
               ) : (
-                <BoardCardList data={filterData} type="list"/>
+                <BoardCardList data={filterData!} type={dataDisplay}/>
               )}
             </>
           )}
