@@ -54,8 +54,8 @@ const Board = () => {
             <h1 className="text-[#3D3D3D] text-[19px] font-bold mb-6">วันนี้คุณต้องการทำอะไร</h1>
 
             <div className="flex items-center gap-x-6">
-              {createWhiteboarding.map((whiteboard) => (
-                <CreateBoardDialog trigger={whiteboard.trigger}/>
+              {createWhiteboarding.map((whiteboard, index) => (
+                <CreateBoardDialog trigger={whiteboard.trigger} key={index}/>
               ))}
             </div>
           </header>
