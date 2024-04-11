@@ -8,7 +8,12 @@ const nextConfig = {
       }
     ]
   },
-  swcMinify: false
+  swcMinify: false,
+  i18n: {
+    locales: ['en', 'th'],
+    defaultLocale: 'en',
+    localeDetection: false
+  }
 };
 
 export default nextConfig;

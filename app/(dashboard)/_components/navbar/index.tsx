@@ -34,27 +34,8 @@ const Navbar = () => {
       </div>
 
       {/* Desktop navbar */}
-      <div className="hidden lg:block">
-        <OrganizationSwitcher 
-          hidePersonal
-          appearance={{
-            elements: {
-              rootBox: {
-                display:"flex",
-                backgroundColor:"white",
-                outline:"none",
-                borderRadius:"8px",
-              },
-              organizationSwitcherTrigger: {
-                outline:"none",
-                backgroundColor:"white",
-                borderRadius:"8px",
-                padding:"8px",
-                height:"40px"
-              }
-            }
-          }}
-        />
+      <div>
+        <p className="text-[#09090B] text-sm">Dashboard</p>
       </div>
 
       <div className="flex items-center gap-x-4">

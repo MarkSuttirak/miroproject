@@ -59,7 +59,7 @@ const BoardCard = ({
               <button className={cn("bg-black/50 p-2 rounded-md absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity", {"opacity-100": isFavourite})} onClick={setFavourite}>
                 <Star fill={isFavourite ? "#FFC700" : "transparent"} stroke={isFavourite ? "#FFC700" : "white"}/>
               </button>
-    
+
               <BoardActions 
                 id={id}
                 side="bottom"

@@ -10,6 +10,9 @@ import 'tldraw/tldraw.css'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { TLStore, useEditor } from 'tldraw'
+import { Room } from '@/components/Room'
+import { Loading } from '@/components/Loading'
+import Participants from '@/components/Participants'
 
 interface BoardIdProps {
   params: {
@@ -24,26 +27,28 @@ const BoardId = ({params} : BoardIdProps) => {
   const Tldraw = dynamic(async () => (await import('tldraw')).Tldraw, { ssr: false })
 
   return (
-    <div style={{ position: 'fixed', inset: 0 }}>
-      <div className='fixed z-[999] left-0 top-[30%] bg-[#edf0f2] rounded-r-lg px-4 py-3 text-sm'>
-        <button className='flex items-center justify-between w-full gap-x-2' onClick={() => setIsLibraryOpen(!isLibraryOpen)}>
-          Library
-          {isLibraryOpen ? <ChevronUp className='w-5 h-5'/> : <ChevronDown className='w-5 h-5'/>}
-        </button>
+    <Room roomId={params.id} fallBack={<Loading />}>
+      <div style={{ position: 'fixed', inset: 0 }}>
+        <div className='fixed z-[999] left-0 top-[30%] bg-[#edf0f2] rounded-r-lg px-4 py-3 text-sm'>
+          <button className='flex items-center justify-between w-full gap-x-2' onClick={() => setIsLibraryOpen(!isLibraryOpen)}>
+            Library
+            {isLibraryOpen ? <ChevronUp className='w-5 h-5'/> : <ChevronDown className='w-5 h-5'/>}
+          </button>
 
-        {isLibraryOpen && (
-          <ul className='flex flex-col gap-y-3 mt-4'>
-            {libraryList.map((list: string) => (
-              <li key={list}>
-                <Image src={list} height={100} width={100} alt={list}/>
-              </li>
-            ))}
-          </ul>
-        )}
+          {isLibraryOpen && (
+            <ul className='flex flex-col gap-y-3 mt-4'>
+              {libraryList.map((list: string) => (
+                <li key={list}>
+                  <Image src={list} height={100} width={100} alt={list}/>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <Tldraw persistenceKey={params.id} />
       </div>
-
-      <Tldraw persistenceKey={params.id} />
-    </div>
+    </Room>
   )
 }
 

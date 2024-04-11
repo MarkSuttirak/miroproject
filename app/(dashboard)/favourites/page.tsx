@@ -1,14 +1,8 @@
 "use client"
 
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { api } from "@/convex/_generated/api"
 import { useQuery } from "convex/react"
-import { Loading } from "@/components/Loading"
 import { useOrganization } from "@clerk/nextjs"
-import BoardCard from "../_components/dashboard/BoardCard"
-import { useCreateBoard } from "@/hooks/use-create-board"
-import { cn, formatDate } from "@/lib/utils"
 import BoardCardList from "../_components/dashboard/BoardCardList"
 import useDisplayBoards from "@/hooks/use-display-boards"
 
