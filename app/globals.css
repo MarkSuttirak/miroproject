@@ -36,7 +36,7 @@ code {
 }
 
 .navbar {
-  @apply py-1 px-[19px] flex items-center justify-between fixed border-b border-b-lightergray right-0 top-0 w-full lg:w-[calc(100%_-_256px)] z-[49] h-[53px]
+  @apply py-1 px-[19px] flex items-center justify-between fixed border-b border-b-lightergray right-0 top-0 w-full lg:w-[calc(100%_-_256px)] z-[49] h-[53px] bg-white
 }
 
 .main-dashboard {

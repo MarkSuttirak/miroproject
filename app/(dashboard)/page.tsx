@@ -15,10 +15,24 @@ import CreateBoardDialog from "./_components/dashboard/CreateBoardDialog"
 import { createWhiteboarding } from "./_data/create-whiteboarding"
 import { MenuModal } from "@/components/MenuLink"
 import ManageOrganization from "./organization/manage/page"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { useState } from "react"
+import useSortData from "@/hooks/use-sort-data"
 
 const Board = () => {
   const data = useQuery(api.board.get)
   const { organization } = useOrganization()
+
+  const [filterType, setFilterType] = useState("alphabetical")
 
   const filterData = data?.filter(org => 
     org.orgName === organization?.name
@@ -41,7 +55,6 @@ const Board = () => {
             </div>
 
             <div className="flex gap-x-6 items-center">
-              {/* <CreateBoardDialog /> */}
 
               <MenuModal trigger={
                 <Button variant="secondary" className="flex items-center gap-x-2 rounded-lg px-[10px] py-[6px] h-fit">
@@ -65,7 +78,6 @@ const Board = () => {
           </header>
 
           <main className="flex flex-col gap-y-6">
-            <BoardBtns />
 
             {data === undefined ? (
               <Loading />
@@ -77,7 +89,38 @@ const Board = () => {
                     <p>Create your first board to get started.</p>
                   </div>
                 ) : (
-                  <BoardCardList data={filterData!} type={dataDisplay}/>
+                  <Tabs defaultValue="all">
+                    <div className="flex items-center justify-between mb-8">
+                      <TabsList className="bg-transparent flex gap-x-3 text-black">
+                        <TabsTrigger value="all" className="data-[state=active]:bg-[#AA67FF] data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]">All</TabsTrigger>
+                        <TabsTrigger value="whiteboard" className="data-[state=active]:bg-[#AA67FF] data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]">Whiteboard</TabsTrigger>
+                        <TabsTrigger value="presentation" className="data-[state=active]:bg-[#AA67FF] data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]">Presentation</TabsTrigger>
+                      </TabsList>
+
+                      <div className="flex items-center gap-x-3">
+                        <Select>
+                          <SelectTrigger className="w-[180px]">
+                            <SelectValue placeholder={filterType} />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectGroup>
+                              <SelectLabel>Sort by</SelectLabel>
+                              <SelectItem value="default">Default</SelectItem>
+                              <SelectItem value="alphabetical">Alphabetical</SelectItem>
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
+
+                        <BoardBtns />
+                      </div>
+                    </div>
+                    <TabsContent value="all">
+                      <BoardCardList data={filterData!} type={dataDisplay}/>
+                    </TabsContent>
+                    <TabsContent value="whiteboard">
+                      <BoardCardList data={filterData!} type={dataDisplay}/>
+                    </TabsContent>
+                  </Tabs>
                 )}
               </>
             )}
