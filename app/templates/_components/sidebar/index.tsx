@@ -29,12 +29,18 @@ const TemplateSidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarPr
         {"translate-x-0": isSidebarOpen})
       }
     >
-        <Link href="/">
-          <Button variant="ghost" className="flex items-center gap-x-2">
-            <ArrowLeft className="h-4 w-4"/>
-            Back to Home
-          </Button>
-        </Link>
+      <section className="px-4">
+        <div className="flex flex-col gap-y-7">
+          <Link href="/" className="group">
+            <Button variant="ghost" className="flex items-center w-full justify-start">
+              <ArrowLeft className="h-4 w-4 mr-2"/>
+              Back to Home
+            </Button>
+          </Link>
+
+
+        </div>
+      </section>
     </div>
   )
 }

@@ -3,7 +3,6 @@ import { SidebarMenuProps } from "@/types"
 import { Icons } from "@/components/Icons"
 
 const iconClassName = "w-4 h-4 stroke-[1.5] text-darkergray"
-const iconTemplateClassName = "drop-shadow-icon-template"
 
 export const orgMenus: SidebarMenuProps[] = [
   // {
@@ -28,22 +27,22 @@ export const orgMenus: SidebarMenuProps[] = [
 export const templateMenus: SidebarMenuProps[] = [
   {
     title:"All Templates",
-    icon:<Icons.allTemplates className={iconTemplateClassName}/>,
+    icon:<Icons.allTemplates />,
     link:'/templates/all'
   },
   {
     title:"Whiteboarding",
-    icon:<Icons.allTemplates className={iconTemplateClassName}/>,
+    icon:<Icons.allTemplates />,
     link:'/whiteboarding'
   },
   {
     title:"Design",
-    icon:<Icons.designTemplates className={iconTemplateClassName}/>,
+    icon:<Icons.designTemplates />,
     link:'/design'
   },
   {
     title:"Presentation",
-    icon:<Icons.presentation className={iconTemplateClassName}/>,
+    icon:<Icons.presentation />,
     link:'/presentation'
   },
 ]

@@ -26,14 +26,21 @@ export interface MenuModalProps {
 }
 
 export interface OpenMobileSidebarProps {
-    isSidebarOpen?: boolean,
+    isSidebarOpen?: boolean
     setIsSidebarOpen?: Function
 }
 
 export interface SidebarMenuProps {
-    title: string,
-    icon: React.ReactNode,
+    title: string
+    icon: React.ReactNode
     link: string
+}
+
+export interface TemplateMenuProps {
+    title: string
+    icon: React.ReactNode
+    submenus?: SidebarMenuProps[]
+    link?: string
 }
 
 export interface BoardCardProps {
