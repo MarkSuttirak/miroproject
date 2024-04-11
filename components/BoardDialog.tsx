@@ -11,20 +11,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ChangeEvent, useState, KeyboardEvent, ReactNode, useEffect } from "react"
 import { Loader2 } from "lucide-react"
-
-type Action = "Update" | "Create" | "Delete"
-
-interface BoardDialogProps {
-  id?: any
-  trigger?: string | ReactNode
-  triggerClassName?: string
-  action: Action
-  onSubmit: (val: string, id: any) => void
-  isSubmitting: boolean
-  openDialog: boolean
-  setOpenDialog: (val: boolean) => void
-  defaultValue?: string
-}
+import { BoardDialogProps } from "@/types"
 
 const BoardDialog = ({ 
   id,

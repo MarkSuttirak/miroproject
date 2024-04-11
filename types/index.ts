@@ -1,4 +1,8 @@
+import { DropdownMenuContentProps } from "@radix-ui/react-dropdown-menu"
+
 export type BoardCardType = "grid" | "list" | string
+
+export type Action = "Update" | "Create" | "Delete"
 
 export interface MenuLinkProps {
     link: string
@@ -43,7 +47,34 @@ export interface BoardCardProps {
     type: BoardCardType
 }
 
+export interface BoardDialogProps {
+    id?: any
+    trigger?: string | React.ReactNode
+    triggerClassName?: string
+    action: Action
+    onSubmit: (val: string, id: any) => void
+    isSubmitting: boolean
+    openDialog: boolean
+    setOpenDialog: (val: boolean) => void
+    defaultValue?: string
+}
+
 export interface BoardCardListProps {
     data: any[]
     type: BoardCardType
-}  
+}
+
+export interface ActionsProps {
+    side?: DropdownMenuContentProps["side"]
+    sideOffset?: DropdownMenuContentProps["sideOffset"]
+    children: React.ReactNode
+    id?: any
+    title?: string
+    className?: string
+}
+
+export interface CenterButtonProps {
+    icon: React.ReactNode
+    title: string
+    desc: string
+}

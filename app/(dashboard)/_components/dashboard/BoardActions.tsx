@@ -6,18 +6,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { DropdownMenuContentProps } from "@radix-ui/react-dropdown-menu"
 import UpdateBoardDialog from "./UpdateBoardDialog"
 import DeleteBoardDialog from "./DeleteBoardDialog"
-
-interface ActionsProps {
-  side?: DropdownMenuContentProps["side"]
-  sideOffset?: DropdownMenuContentProps["sideOffset"]
-  children: React.ReactNode
-  id?: any
-  title?: string
-  className?: string
-}
+import { ActionsProps } from "@/types"
 
 const BoardActions = ({
   side,

@@ -7,11 +7,8 @@ import { MenuItems, MenuModal } from "@/components/MenuLink"
 import { usePathname, useRouter } from 'next/navigation'
 import { cn } from "@/lib/utils"
 import { OpenMobileSidebarProps } from "@/types"
-import whiteboardIcon from "@/public/whiteboard-icon.svg"
-import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
 import { Icons } from "@/components/Icons"
-import { CreateOrganization } from "@clerk/nextjs"
 import { Plus } from "lucide-react"
 import AddOrg from "./AddOrg"
 

@@ -3,7 +3,7 @@
 import BoardActions from "@/app/(dashboard)/_components/dashboard/BoardActions"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"  
 import { useAuth } from "@clerk/nextjs"
-import { Heart, MoreHorizontal, Star } from "lucide-react"
+import { MoreHorizontal, Star } from "lucide-react"
 import Link from "next/link"
 import { api } from "@/convex/_generated/api"
 import { useMutation } from "convex/react"

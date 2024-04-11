@@ -3,7 +3,7 @@
 import { api } from "@/convex/_generated/api"
 import { useQuery } from "convex/react"
 import { Loading } from "@/components/Loading"
-import { useOrganization } from "@clerk/nextjs"
+import { OrganizationProfile, useOrganization } from "@clerk/nextjs"
 import EmptyOrg from "./_components/dashboard/EmptyOrg"
 import BoardCardList from "./_components/dashboard/BoardCardList"
 import useDisplayBoards from "@/hooks/use-display-boards"
@@ -28,6 +28,7 @@ import {
 import { useState } from "react"
 import useSortData from "@/hooks/use-sort-data"
 import { cn } from "@/lib/utils"
+import CenterButton from "@/components/CenterButton"
 
 const Board = () => {
   const data = useQuery(api.board.get)
@@ -43,19 +44,6 @@ const Board = () => {
   // const showData = filterType === "alphabetical" ? alphabeticalData : filterData
 
   const { dataDisplay, BoardBtns } = useDisplayBoards()
-
-  const AddCard = () => {
-    return (
-      <div className="add-board">
-        <Plus className="text-darkpurple h-5 w-5"/>
-
-        <div>
-          <h2 className="text-[#18181B] text-base font-medium">Start New design</h2>
-          <p className="text-xs font-medium text-muted-foreground">Create a template here</p>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <>
@@ -78,8 +66,16 @@ const Board = () => {
                   <Settings2 className="h-4 w-4"/>
                   Manage Organization
                 </Button>
-              } contentClassName="min-w-0 max-w-none w-3/4">
-                <ManageOrganization />
+              } contentClassName="min-w-0 max-w-none w-fit p-0">
+                <OrganizationProfile
+                  appearance={{
+                    elements: {
+                      navbar: {
+                        display: "none"
+                      }
+                    }
+                  }}
+                />
               </MenuModal>
             </div>
           </div>
@@ -145,8 +141,10 @@ const Board = () => {
             </div>
 
             {filterData?.length === 0 ? (
-              <div className="absolute w-full h-full flex items-center justify-center top-[15%]">
-                <CreateBoardDialog trigger={<AddCard />} />
+              <div className="absolute w-full h-full flex items-center justify-center top-0">
+                <CreateBoardDialog trigger={
+                  <CenterButton icon={<Plus className="text-darkpurple h-5 w-5"/>} title="Start New design" desc="Create a template here"/>
+                } />
               </div>
             ) : null}
           </main>
