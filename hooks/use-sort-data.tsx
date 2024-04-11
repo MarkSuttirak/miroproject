@@ -1,5 +1,5 @@
 const useSortData = (data: any[]) => {
-    const alphaBeticaldata = data?.sort((a, b) => {
+    const alphabeticaldata = data?.sort((a, b) => {
       const titleA = a.title.toLowerCase();
       const titleB = b.title.toLowerCase();
       if (titleA < titleB) return -1;
@@ -7,7 +7,7 @@ const useSortData = (data: any[]) => {
       return 0;
     })
 
-    return { alphaBeticaldata }
+    return { alphabeticaldata }
 }
 
 export default useSortData

@@ -32,11 +32,14 @@ const Board = () => {
   const data = useQuery(api.board.get)
   const { organization } = useOrganization()
 
-  const [filterType, setFilterType] = useState("alphabetical")
+  const [filterType, setFilterType] = useState("default")
 
   const filterData = data?.filter(org => 
     org.orgName === organization?.name
   )
+
+  // const { alphabeticalData } = useSortData(filterData)
+  // const showData = filterType === "alphabetical" ? alphabeticalData : filterData
 
   const { dataDisplay, BoardBtns } = useDisplayBoards()
 
@@ -98,9 +101,9 @@ const Board = () => {
                       </TabsList>
 
                       <div className="flex items-center gap-x-3">
-                        <Select>
-                          <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder={filterType} />
+                        <Select value={filterType} onValueChange={setFilterType}>
+                          <SelectTrigger className="w-[180px] border-none outline-none">
+                            <SelectValue defaultValue={filterType} placeholder="Sort by" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectGroup>
