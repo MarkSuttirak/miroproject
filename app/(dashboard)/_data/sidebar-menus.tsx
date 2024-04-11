@@ -6,11 +6,11 @@ const iconClassName = "w-4 h-4 stroke-[1.5] text-darkergray"
 const iconTemplateClassName = "drop-shadow-icon-template"
 
 export const orgMenus: SidebarMenuProps[] = [
-  {
-    title:"Create new",
-    icon:<Plus className={iconClassName}/>,
-    link:'/organization/add'
-  },
+  // {
+  //   title:"Create new",
+  //   icon:<Plus className={iconClassName}/>,
+  //   link:'/organization/add'
+  // },
   {
     title:"Favorite boards",
     icon:<Star className={iconClassName}/>,

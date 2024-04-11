@@ -15,6 +15,12 @@ export interface MenuItemsProps {
     setActive: (link: string) => void
 }
 
+export interface MenuModalProps {
+    trigger: React.ReactNode | string
+    children: React.ReactNode
+    contentClassName?: string
+}
+
 export interface OpenMobileSidebarProps {
     isSidebarOpen?: boolean,
     setIsSidebarOpen?: Function

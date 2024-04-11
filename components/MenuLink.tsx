@@ -1,7 +1,15 @@
 import { cn } from "@/lib/utils"
 import { ReactNode } from "react"
 import Link from "next/link"
-import { MenuItemsProps, MenuLinkProps } from "@/types"
+import { MenuItemsProps, MenuLinkProps, MenuModalProps } from "@/types"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 export const MenuLink = ({link, active, setActive, icon, title, onClick} : MenuLinkProps) => {
 
@@ -37,4 +45,17 @@ export const MenuItems = ({ menus, active, setActive } : MenuItemsProps) => {
       />
     ))}
   </>
+}
+
+export const MenuModal = ({ trigger, children, contentClassName } : MenuModalProps) => {
+  return (
+    <Dialog>
+      <DialogTrigger>
+        {trigger}
+      </DialogTrigger>
+      <DialogContent className={contentClassName}>
+        {children}
+      </DialogContent>
+    </Dialog>
+  )
 }

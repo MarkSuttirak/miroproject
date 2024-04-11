@@ -13,6 +13,8 @@ import Link from "next/link"
 import { Settings2 } from "lucide-react"
 import CreateBoardDialog from "./_components/dashboard/CreateBoardDialog"
 import { createWhiteboarding } from "./_data/create-whiteboarding"
+import { MenuModal } from "@/components/MenuLink"
+import ManageOrganization from "./organization/manage/page"
 
 const Board = () => {
   const data = useQuery(api.board.get)
@@ -41,12 +43,14 @@ const Board = () => {
             <div className="flex gap-x-6 items-center">
               {/* <CreateBoardDialog /> */}
 
-              <Link href="/organization/manage">
+              <MenuModal trigger={
                 <Button variant="secondary" className="flex items-center gap-x-2 rounded-lg px-[10px] py-[6px] h-fit">
                   <Settings2 className="h-4 w-4"/>
                   Manage Organization
                 </Button>
-              </Link>
+              } contentClassName="min-w-0 max-w-none w-3/4">
+                <ManageOrganization />
+              </MenuModal>
             </div>
           </div>
 

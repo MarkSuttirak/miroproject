@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import OrgList from "./OrgList"
 import { templateMenus, navigationMenus, orgMenus } from "../../_data/sidebar-menus"
-import { MenuItems } from "@/components/MenuLink"
+import { MenuItems, MenuModal } from "@/components/MenuLink"
 import { usePathname, useRouter } from 'next/navigation'
 import { cn } from "@/lib/utils"
 import { OpenMobileSidebarProps } from "@/types"
@@ -11,6 +11,9 @@ import whiteboardIcon from "@/public/whiteboard-icon.svg"
 import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
 import { Icons } from "@/components/Icons"
+import { CreateOrganization } from "@clerk/nextjs"
+import { Plus } from "lucide-react"
+import AddOrg from "./AddOrg"
 
 const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => {
   const pathname = usePathname()
@@ -56,6 +59,15 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
             <OrgList />
 
             <div className="flex flex-col gap-y-2">
+              <MenuModal trigger={
+                <button className="sidebar-btn">
+                  <Plus className="w-4 h-4 stroke-[1.5] text-darkergray"/>
+                  <p className="text-[13px] font-medium">Create new</p>
+                </button>
+              } contentClassName="p-0 min-w-0 max-w-none w-fit">
+                <AddOrg />
+              </MenuModal>
+
               <MenuItems menus={orgMenus} active={activeMenu} setActive={setActiveMenu}/>
             </div>
           </div>

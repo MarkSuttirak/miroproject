@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDown, ChevronRight, ChevronUp } from 'lucide-react'
+import { ArrowLeft, ChevronDown, ChevronRight, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
 import templateOne from '../../../library-templates/templateOne.png'
 import templateTwo from '../../../library-templates/templateTwo.svg'
@@ -13,6 +13,9 @@ import { TLStore, useEditor } from 'tldraw'
 import { Room } from '@/components/Room'
 import { Loading } from '@/components/Loading'
 import Participants from '@/components/Participants'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import BoardTopbar from './_components/topbar'
 
 interface BoardIdProps {
   params: {
@@ -28,7 +31,11 @@ const BoardId = ({params} : BoardIdProps) => {
 
   return (
     <Room roomId={params.id} fallBack={<Loading />}>
-      <div style={{ position: 'fixed', inset: 0 }}>
+
+      <div style={{ position: 'fixed', inset: 0, background:'hsl(210, 20%, 98%)' }}>
+
+        <BoardTopbar boardId={params.id}/>
+
         <div className='fixed z-[999] left-0 top-[30%] bg-[#edf0f2] rounded-r-lg px-4 py-3 text-sm'>
           <button className='flex items-center justify-between w-full gap-x-2' onClick={() => setIsLibraryOpen(!isLibraryOpen)}>
             Library
