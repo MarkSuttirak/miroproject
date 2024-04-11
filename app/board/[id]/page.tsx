@@ -32,7 +32,7 @@ const BoardId = ({params} : BoardIdProps) => {
   return (
     <Room roomId={params.id} fallBack={<Loading />}>
 
-      <div style={{ position: 'fixed', inset: 0, background:'hsl(210, 20%, 98%)' }}>
+      <div style={{ position: 'fixed', inset: 0, height:"calc(100% - 48px)" }}>
 
         <BoardTopbar boardId={params.id}/>
 
