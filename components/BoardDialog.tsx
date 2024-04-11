@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ChangeEvent, useState, KeyboardEvent, ReactNode } from "react"
+import { ChangeEvent, useState, KeyboardEvent, ReactNode, useEffect } from "react"
 import { Loader2 } from "lucide-react"
 
 type Action = "Update" | "Create" | "Delete"
@@ -54,6 +54,12 @@ const BoardDialog = ({
       onSubmit(title, id)
     }
   }
+
+  useEffect(() => {
+    if (action === "Update"){
+      setTitle(defaultValue || "")
+    }
+  }, [defaultValue])
 
   const handleEnter = (e: KeyboardEvent) => e.key === "Enter" && handleSubmit()
 

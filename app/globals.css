@@ -31,6 +31,11 @@ code {
   animation:fade-in 600ms;
 }
 
+.add-board {
+  background:linear-gradient(72.77deg, #FFFFFF -6.04%, #F6F4FF 111.24%);
+  border:2px solid #6E3EFF80;
+  @apply h-[222px] w-[360px] rounded-xl flex flex-col gap-y-4 items-center justify-center
+}
 .dashboard-title {
   @apply text-[26px] font-semibold
 }

@@ -10,7 +10,7 @@ import useDisplayBoards from "@/hooks/use-display-boards"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Settings2 } from "lucide-react"
+import { Plus, Settings2 } from "lucide-react"
 import CreateBoardDialog from "./_components/dashboard/CreateBoardDialog"
 import { createWhiteboarding } from "./_data/create-whiteboarding"
 import { MenuModal } from "@/components/MenuLink"
@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/select"
 import { useState } from "react"
 import useSortData from "@/hooks/use-sort-data"
+import { cn } from "@/lib/utils"
 
 const Board = () => {
   const data = useQuery(api.board.get)
@@ -42,6 +43,19 @@ const Board = () => {
   // const showData = filterType === "alphabetical" ? alphabeticalData : filterData
 
   const { dataDisplay, BoardBtns } = useDisplayBoards()
+
+  const AddCard = () => {
+    return (
+      <div className="add-board">
+        <Plus className="text-darkpurple h-5 w-5"/>
+
+        <div>
+          <h2 className="text-[#18181B] text-base font-medium">Start New design</h2>
+          <p className="text-xs font-medium text-muted-foreground">Create a template here</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -80,53 +94,61 @@ const Board = () => {
             </div>
           </header>
 
-          <main className="flex flex-col gap-y-6">
+          <main className="relative">
+            <div className={cn("flex flex-col gap-y-6", {"blur" : filterData?.length === 0})}>
+              {data === undefined ? (
+                <Loading />
+              ) : (
+                <Tabs defaultValue="all">
+                  <div className="flex items-center justify-between mb-8">
+                    <TabsList className="bg-transparent flex gap-x-3 text-black">
+                      <TabsTrigger value="all" className="data-[state=active]:bg-[#AA67FF] data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]">All</TabsTrigger>
+                      <TabsTrigger value="whiteboard" className="data-[state=active]:bg-[#AA67FF] data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]">Whiteboard</TabsTrigger>
+                      <TabsTrigger value="presentation" className="data-[state=active]:bg-[#AA67FF] data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]">Presentation</TabsTrigger>
+                    </TabsList>
 
-            {data === undefined ? (
-              <Loading />
-            ) : (
-              <>
-                {filterData?.length === 0 ? (
-                  <div className="flex flex-col items-center h-[60vh] w-full justify-center gap-y-4">
-                    <h1 className="dashboard-title">No boards</h1>
-                    <p>Create your first board to get started.</p>
-                  </div>
-                ) : (
-                  <Tabs defaultValue="all">
-                    <div className="flex items-center justify-between mb-8">
-                      <TabsList className="bg-transparent flex gap-x-3 text-black">
-                        <TabsTrigger value="all" className="data-[state=active]:bg-[#AA67FF] data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]">All</TabsTrigger>
-                        <TabsTrigger value="whiteboard" className="data-[state=active]:bg-[#AA67FF] data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]">Whiteboard</TabsTrigger>
-                        <TabsTrigger value="presentation" className="data-[state=active]:bg-[#AA67FF] data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]">Presentation</TabsTrigger>
-                      </TabsList>
+                    <div className="flex items-center gap-x-3">
+                      <Select value={filterType} onValueChange={setFilterType}>
+                        <SelectTrigger className="w-[180px] border-none outline-none">
+                          <SelectValue defaultValue={filterType} placeholder="Sort by" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectGroup>
+                            <SelectLabel>Sort by</SelectLabel>
+                            <SelectItem value="default">Default</SelectItem>
+                            <SelectItem value="alphabetical">Alphabetical</SelectItem>
+                          </SelectGroup>
+                        </SelectContent>
+                      </Select>
 
-                      <div className="flex items-center gap-x-3">
-                        <Select value={filterType} onValueChange={setFilterType}>
-                          <SelectTrigger className="w-[180px] border-none outline-none">
-                            <SelectValue defaultValue={filterType} placeholder="Sort by" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectGroup>
-                              <SelectLabel>Sort by</SelectLabel>
-                              <SelectItem value="default">Default</SelectItem>
-                              <SelectItem value="alphabetical">Alphabetical</SelectItem>
-                            </SelectGroup>
-                          </SelectContent>
-                        </Select>
-
-                        <BoardBtns />
-                      </div>
+                      <BoardBtns />
                     </div>
-                    <TabsContent value="all">
-                      <BoardCardList data={filterData!} type={dataDisplay}/>
-                    </TabsContent>
-                    <TabsContent value="whiteboard">
-                      <BoardCardList data={filterData!} type={dataDisplay}/>
-                    </TabsContent>
-                  </Tabs>
-                )}
-              </>
-            )}
+                  </div>
+                  {filterData?.length !== 0 ? (
+                    <>
+                      <TabsContent value="all">
+                        <BoardCardList data={filterData!} type={dataDisplay}/>
+                      </TabsContent>
+                      <TabsContent value="whiteboard">
+                        <BoardCardList data={filterData!} type={dataDisplay}/>
+                      </TabsContent>
+                    </>
+                  ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                      <div className="bg-lightergray w-full h-[300px] rounded-md"/>
+                      <div className="bg-lightergray w-full h-[300px] rounded-md"/>
+                      <div className="bg-lightergray w-full h-[300px] rounded-md"/>
+                    </div>
+                  )}
+                </Tabs>
+              )}
+            </div>
+
+            {filterData?.length === 0 ? (
+              <div className="absolute w-full h-full flex items-center justify-center top-[15%]">
+                <CreateBoardDialog trigger={<AddCard />} />
+              </div>
+            ) : null}
           </main>
         </section>
       )}
