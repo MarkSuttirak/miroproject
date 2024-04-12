@@ -11,7 +11,7 @@ const Whiteboarding = () => {
 
   const [bgGradient, setBgGradient] = useState("linear-gradient(180deg, #FFFFFF -72.08%, #FFFFFF -72.04%, #FFD5FD 224.77%)")
   const tabBtnClassName = "data-[state=active]:text-white bg-white rounded-full px-4 py-[10px]"
-  const [selectedTab, setSelectedTab] = useState("all")
+  const [selectedTab, setSelectedTab] = useState("whiteboard")
 
   const WhiteboardingTrigger = () => {
     return (
