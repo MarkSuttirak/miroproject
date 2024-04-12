@@ -26,7 +26,7 @@ const Whiteboarding = () => {
     return (
       <>
         {whiteboardingTriggers.map(trigger => (
-          <TabsContent value={trigger.type}>
+          <TabsContent value={trigger.type} key={trigger.type}>
             <div className="flex items-center gap-x-6 fade-in">
               <div className="grid grid-cols-3 gap-x-6 w-full">
                 {createWhiteboarding.filter(data => data.type === trigger.type).map((whiteboard, index) => (
