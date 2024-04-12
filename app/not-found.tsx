@@ -9,7 +9,7 @@ const NotFound = () => {
             
             <div className="flex flex-col gap-y-3">
                 <h1 className="text-4xl font-bold">404 NOT FOUND</h1>
-                <p className="text-lg">We're sorry, but the page you are looking for does not exist. :(</p>
+                <p className="text-lg">We&apos;re sorry, but the page you are looking for does not exist. :(</p>
             </div>
 
             <Link href="/" className="mt-4">

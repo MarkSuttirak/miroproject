@@ -29,6 +29,7 @@ import { useState } from "react"
 import useSortData from "@/hooks/use-sort-data"
 import { cn } from "@/lib/utils"
 import CenterButton from "@/components/CenterButton"
+import Whiteboarding from "./_components/dashboard/Whiteboarding"
 
 const Board = () => {
   const data = useQuery(api.board.get)
@@ -80,15 +81,7 @@ const Board = () => {
             </div>
           </div>
 
-          <header className="px-6 py-8 rounded-3xl" style={{background:"linear-gradient(180deg, #FFFFFF -72.08%, #FFFFFF -72.04%, #DDD5FF 224.77%)"}}>
-            <h1 className="text-[#3D3D3D] text-[19px] font-bold mb-6">วันนี้คุณต้องการทำอะไร</h1>
-
-            <div className="flex items-center gap-x-6">
-              {createWhiteboarding.map((whiteboard, index) => (
-                <CreateBoardDialog trigger={whiteboard.trigger} key={index}/>
-              ))}
-            </div>
-          </header>
+          <Whiteboarding />
 
           <main className="relative">
             <div className={cn("flex flex-col gap-y-6", {"blur" : filterData?.length === 0})}>
