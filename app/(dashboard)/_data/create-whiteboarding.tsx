@@ -1,7 +1,6 @@
-import powerfulPresentation from "@/public/images/powerful-presentation.png"
 import WhiteboardCard from "../_components/dashboard/whiteboarding/WhiteboardCard";
-import { whiteboardImages } from "./whiteboarding-images";
-import { CreateWhiteboarding } from "@/types";
+import { allTemps, whiteboardImages } from "./whiteboarding-images";
+import { CreateWhiteboarding, WhiteboardTriggers } from "@/types";
 
 export const createWhiteboarding: CreateWhiteboarding[] = [
   {
@@ -22,15 +21,17 @@ export const createWhiteboarding: CreateWhiteboarding[] = [
   }
 ]
 
-export const whiteboardingTriggers = [
+export const whiteboardingTriggers: WhiteboardTriggers[] = [
   {
     className: "data-[state=active]:bg-[#AA67FF]",
     title: "Whiteboard",
-    type: "whiteboard"
+    type: "whiteboard",
+    allTempImg: allTemps.allTempTwo
   },
   {
     className: "data-[state=active]:bg-[#6792FF]",
     title: "Design item",
-    type: "design-item"
+    type: "design-item",
+    allTempImg: allTemps.allTempThree
   }
 ]

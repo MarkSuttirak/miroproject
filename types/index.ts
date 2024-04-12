@@ -6,7 +6,7 @@ export type BoardCardType = "grid" | "list" | string
 
 export type Action = "Update" | "Create" | "Delete"
 
-export type WhiteboardingType = "whiteboard" | "presentation" | "design-item"
+export type WhiteboardingType = "whiteboard" | "presentation" | "design-item" | "social-media" | "print-products"
 
 export interface CreateWhiteboarding {
   trigger: ReactNode
@@ -106,4 +106,5 @@ export interface WhiteboardTriggers {
     className: string
     title: string
     type: WhiteboardingType
+    allTempImg: StaticImageData
 }

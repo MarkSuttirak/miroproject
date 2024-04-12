@@ -11,7 +11,6 @@ const Whiteboarding = () => {
 
   const [bgGradient, setBgGradient] = useState("linear-gradient(180deg, #FFFFFF -72.08%, #FFFFFF -72.04%, #FFD5FD 224.77%)")
   const tabBtnClassName = "data-[state=active]:text-white bg-white rounded-full px-4 py-[10px]"
-  const [selectedTab, setSelectedTab] = useState("whiteboard")
 
   const WhiteboardingTrigger = () => {
     return (
@@ -23,27 +22,31 @@ const Whiteboarding = () => {
     )
   }
 
-  const WhiteboardingTab = ({ value } : { value: string }) => {
+  const WhiteboardingTab = () => {
     return (
-      <TabsContent value={value} className="fade-in">
-        <div className="flex items-center gap-x-6">
-          <div className="grid grid-cols-3 gap-x-6 w-full">
-            {createWhiteboarding.filter(data => data.type === value).map((whiteboard, index) => (
-              <CreateBoardDialog trigger={whiteboard.trigger} key={index} triggerClassName="w-full"/>
-            ))}
-          </div>
+      <>
+        {whiteboardingTriggers.map(trigger => (
+          <TabsContent value={trigger.type}>
+            <div className="flex items-center gap-x-6 fade-in">
+              <div className="grid grid-cols-3 gap-x-6 w-full">
+                {createWhiteboarding.filter(data => data.type === trigger.type).map((whiteboard, index) => (
+                  <CreateBoardDialog trigger={whiteboard.trigger} key={index} triggerClassName="w-full"/>
+                ))}
+              </div>
+    
+              <button className="min-w-[188px] overflow-hidden relative rounded-lg">
+                <Image src={trigger.allTempImg} width={188} height={188} alt="All templates"/>
+    
+                <p className="absolute bottom-0 bg-[#6E3EFF] w-full text-sm py-3 text-white font-bold flex items-center gap-x-2 justify-center">
+                  All templates
 
-          <button className="min-w-[188px] overflow-hidden relative rounded-lg">
-            <Image src={allTemps.allTempOne} width={188} height={188} alt="All templates"/>
-
-            <p className="absolute bottom-0 bg-[#6E3EFF] w-full text-sm py-3 text-white font-bold flex items-center gap-x-2 justify-center">
-              All templates
-
-              <ChevronRight className="h-4 w-4"/>
-            </p>
-          </button>
-        </div>
-      </TabsContent>
+                  <ChevronRight className="h-4 w-4"/>
+                </p>
+              </button>
+            </div>
+          </TabsContent>
+        ))}
+      </>
     )
   }
 
@@ -53,8 +56,6 @@ const Whiteboarding = () => {
       case "design-item": setBgGradient("linear-gradient(180deg, #FFFFFF -72.08%, #FFFFFF -72.04%, #D5F2FF 224.77%)"); break
       default: setBgGradient("linear-gradient(180deg, #FFFFFF -72.08%, #FFFFFF -72.04%, #FFD5FD 224.77%)"); break
     }
-
-    setSelectedTab(tab)
   }
 
   return (
@@ -67,23 +68,7 @@ const Whiteboarding = () => {
 
           <Input type="search" placeholder="Facebook post" className="max-w-[329px] rounded-full" />
         </div>
-        <TabsContent value="all" className="fade-in">
-          <div className="flex items-center gap-x-6">
-            {createWhiteboarding.map((whiteboard, index) => (
-              <CreateBoardDialog trigger={whiteboard.trigger} key={index} triggerClassName="w-full"/>
-            ))}
-            <button className="min-w-[188px] overflow-hidden relative rounded-lg">
-              <Image src={allTemps.allTempOne} width={188} height={188} alt="All templates"/>
-
-              <p className="absolute bottom-0 bg-[#FF5B90] w-full text-sm py-3 text-white font-bold flex items-center gap-x-2 justify-center">
-                All templates
-
-                <ChevronRight className="h-4 w-4"/>
-              </p>
-            </button>
-          </div>
-        </TabsContent>
-        <WhiteboardingTab value={selectedTab}/>
+        <WhiteboardingTab />
       </Tabs>
     </header>
   )
