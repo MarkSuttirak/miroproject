@@ -36,6 +36,7 @@ const Board = () => {
   const { organization } = useOrganization()
 
   const [filterType, setFilterType] = useState("default")
+  const tabBtnClassName = "data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]"
 
   const filterData = data?.filter(org => 
     org.orgName === organization?.name
@@ -91,9 +92,9 @@ const Board = () => {
                 <Tabs defaultValue="all">
                   <div className="flex items-center justify-between mb-8">
                     <TabsList className="bg-transparent flex gap-x-3 text-black">
-                      <TabsTrigger value="all" className="data-[state=active]:bg-[#AA67FF] data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]">All</TabsTrigger>
-                      <TabsTrigger value="whiteboard" className="data-[state=active]:bg-[#AA67FF] data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]">Whiteboard</TabsTrigger>
-                      <TabsTrigger value="presentation" className="data-[state=active]:bg-[#AA67FF] data-[state=active]:text-white bg-lightergray rounded-full px-4 py-[10px]">Presentation</TabsTrigger>
+                      <TabsTrigger value="all" className={`data-[state=active]:bg-[#AA67FF] ${tabBtnClassName}`}>All</TabsTrigger>
+                      <TabsTrigger value="whiteboard" className={`data-[state=active]:bg-[#AA67FF] ${tabBtnClassName}`}>Whiteboard</TabsTrigger>
+                      <TabsTrigger value="presentation" className={`data-[state=active]:bg-[#AA67FF] ${tabBtnClassName}`}>Presentation</TabsTrigger>
                     </TabsList>
 
                     <div className="flex items-center gap-x-3">
@@ -115,10 +116,10 @@ const Board = () => {
                   </div>
                   {filterData?.length !== 0 ? (
                     <>
-                      <TabsContent value="all">
+                      <TabsContent value="all" className="fade-in">
                         <BoardCardList data={filterData!} type={dataDisplay}/>
                       </TabsContent>
-                      <TabsContent value="whiteboard">
+                      <TabsContent value="whiteboard" className="fade-in">
                         <BoardCardList data={filterData!} type={dataDisplay}/>
                       </TabsContent>
                     </>

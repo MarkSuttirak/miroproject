@@ -18,9 +18,9 @@ const BoardTopbar = ({ boardId } : BoardTopbarProps) => {
 
   useEffect(() => {
     if (data?.title){
-      document.title = `${data?.title} - Baumeis`
+      document.title = `${data?.title} - Miroproj`
     } else {
-      document.title = `Baumeis`
+      document.title = `Miroproj`
     }
   }, [data?.title])
 

@@ -31,10 +31,9 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
         <section className="group flex items-center gap-x-2 relative px-3.5">
           <Icons.whiteboardIcon className="min-w-9 min-h-9 z-[99] drop-shadow-md" />
           <div>
-            <h2 className="cal-sans text-[17px] font-semibold">
-              zaviago
-              <span className="text-[13px]">.com</span>
-            </h2>
+            <h2 className="cal-sans text-lg font-semibold">zaviago</h2>
+
+            {/* window.location.hostname will be replaced with the client website */}
             <p className="text-[11px] font-medium tracking-[-0.33px] text-[#5A5A5A] -mt-1">{window.location.hostname}</p>
           </div>
 
