@@ -7,10 +7,11 @@ export type Action = "Update" | "Create" | "Delete"
 export interface MenuLinkProps {
     link: string
     active: string
-    setActive: Function
+    setActive: (link: string) => void
     icon: React.ReactNode
     title: string
-    onClick?: Function
+    onClick?: () => void
+    submenus?: SidebarMenuProps[]
 }
 
 export interface MenuItemsProps {
@@ -36,7 +37,7 @@ export interface SidebarMenuProps {
     link: string
 }
 
-export interface TemplateMenuProps {
+export interface TemplatePageMenuProps {
     title: string
     icon: React.ReactNode
     submenus?: SidebarMenuProps[]

@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils"
-import { ReactNode } from "react"
+import { ReactNode, useState } from "react"
 import Link from "next/link"
 import { MenuItemsProps, MenuLinkProps, MenuModalProps } from "@/types"
 import {
@@ -10,24 +10,36 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { ChevronDown } from "lucide-react"
 
-export const MenuLink = ({link, active, setActive, icon, title, onClick} : MenuLinkProps) => {
+export const MenuLink = ({link, active, setActive, icon, title, onClick, submenus} : MenuLinkProps) => {
+
+  const [expandSubmenus, setExpandSubmenus] = useState(false)
 
   const handleClickLink = () => {
-    setActive(link)
-
+    submenus ? setExpandSubmenus(!expandSubmenus) : setActive(link)
     onClick && onClick()
   }
 
   return (
-    <Link href={link}>
+    <Link href={!submenus ? link : ""}>
       <button 
         className={cn("sidebar-btn", {"bg-zinc-100": active == link})}
         onClick={handleClickLink}
       >
-        {icon}
-        <p className="text-[13px] font-medium">{title}</p>
+        <div className="flex items-center gap-x-2">
+          {icon}
+          <p className="text-[13px] font-medium">{title}</p>
+        </div>
+
+        {submenus ? <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", {"rotate-180": expandSubmenus})}/> : null}
       </button>
+
+      {submenus && expandSubmenus ? 
+        <div className="ml-4">
+          <MenuItems menus={submenus} active={active} setActive={setActive}/> 
+        </div>
+      : null}
     </Link>
   )
 }
@@ -42,6 +54,7 @@ export const MenuItems = ({ menus, active, setActive } : MenuItemsProps) => {
         setActive={setActive}
         icon={menu.icon}
         title={menu.title}
+        submenus={menu.submenus}
       />
     ))}
   </>

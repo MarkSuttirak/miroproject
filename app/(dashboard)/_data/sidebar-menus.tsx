@@ -28,22 +28,22 @@ export const templateMenus: SidebarMenuProps[] = [
   {
     title:"All Templates",
     icon:<Icons.allTemplates />,
-    link:'/templates/all'
+    link:'/templates'
   },
   {
     title:"Whiteboarding",
     icon:<Icons.allTemplates />,
-    link:'/whiteboarding'
+    link:'/templates/whiteboarding'
   },
   {
     title:"Design",
     icon:<Icons.designTemplates />,
-    link:'/design'
+    link:'/templates/design'
   },
   {
     title:"Presentation",
     icon:<Icons.presentation />,
-    link:'/presentation'
+    link:'/templates/presentation'
   },
 ]
 

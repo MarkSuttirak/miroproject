@@ -7,7 +7,7 @@ interface LoadingProps {
 export const Loading = ({ isFullScreen } : LoadingProps) => {
 
   const bgGradient = {
-    background:"linear-gradient(0deg, #2563EB, #FFFFFF)"
+    background:"linear-gradient(90deg, rgba(52,128,254,1) 0%, rgba(255,92,0,1) 50%, rgba(255,187,0,1) 100%)"
   }
 
   return (
@@ -16,7 +16,7 @@ export const Loading = ({ isFullScreen } : LoadingProps) => {
         <div className="bg-white w-10 h-10 rounded-full" />
       </div>
 
-      <h1 className="text-blue-600 text-lg font-medium">Loading...</h1>
+      <h1 className="text-[#3480FE] text-lg font-medium">Loading...</h1>
     </div>
   )
 }

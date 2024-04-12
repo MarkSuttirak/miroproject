@@ -1,10 +1,12 @@
 import UpdateBoardDialog from "@/app/(dashboard)/_components/dashboard/UpdateBoardDialog"
+import { metadata } from "@/app/layout"
 import { Button } from "@/components/ui/button"
 import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
 import { useQuery } from "convex/react"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
+import { useEffect } from "react"
 
 interface BoardTopbarProps {
   boardId: string
@@ -13,6 +15,14 @@ interface BoardTopbarProps {
 const BoardTopbar = ({ boardId } : BoardTopbarProps) => {
 
   const data = useQuery(api.board.get_room, {id: boardId as Id<"boards">})
+
+  useEffect(() => {
+    if (data?.title){
+      document.title = `${data?.title} - Baumeis`
+    } else {
+      document.title = `Baumeis`
+    }
+  }, [data?.title])
 
   return (
     <section className='h-12 grid grid-cols-3 items-center px-4 bg-darkpurple fade-in text-white'>

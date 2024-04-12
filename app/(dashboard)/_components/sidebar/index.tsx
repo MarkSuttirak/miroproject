@@ -58,8 +58,10 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen} : OpenMobileSidebarProps) => 
             <div className="flex flex-col gap-y-2">
               <MenuModal trigger={
                 <button className="sidebar-btn">
-                  <Plus className="w-4 h-4 stroke-[1.5] text-darkergray"/>
-                  <p className="text-[13px] font-medium">Create new</p>
+                  <div className="flex items-center gap-x-2">
+                    <Plus className="w-4 h-4 stroke-[1.5] text-darkergray"/>
+                    <p className="text-[13px] font-medium">Create new</p>
+                  </div>
                 </button>
               } contentClassName="p-0 min-w-0 max-w-none w-fit">
                 <AddOrg />
