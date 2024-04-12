@@ -17,7 +17,7 @@ const Whiteboarding = () => {
     return (
       <>
         {whiteboardingTriggers.map(trigger => (
-          <TabsTrigger value={trigger.type} className={`${trigger.className} ${tabBtnClassName}`}>{trigger.title}</TabsTrigger>
+          <TabsTrigger key={trigger.title} value={trigger.type} className={`${trigger.className} ${tabBtnClassName}`}>{trigger.title}</TabsTrigger>
         ))}
       </>
     )
