@@ -26,17 +26,17 @@ const Whiteboarding = () => {
     return (
       <>
         {whiteboardingTriggers.map(trigger => (
-          <TabsContent value={trigger.type} key={trigger.type}>
-            <div className="flex items-center gap-x-6 fade-in">
+          <TabsContent value={trigger.type} key={trigger.type} className="fade-in">
+            <div className="flex items-center gap-x-6">
               <div className="grid grid-cols-3 gap-x-6 w-full">
                 {createWhiteboarding.filter(data => data.type === trigger.type).map((whiteboard, index) => (
                   <CreateBoardDialog trigger={whiteboard.trigger} key={index} triggerClassName="w-full"/>
                 ))}
               </div>
-    
+
               <button className="min-w-[188px] overflow-hidden relative rounded-lg">
                 <Image src={trigger.allTempImg} width={188} height={188} alt="All templates"/>
-    
+
                 <p className="absolute bottom-0 bg-[#6E3EFF] w-full text-sm py-3 text-white font-bold flex items-center gap-x-2 justify-center">
                   All templates
 

@@ -16,7 +16,11 @@ export const createWhiteboarding: CreateWhiteboarding[] = [
     type:"whiteboard"
   },
   {
-    trigger: (<WhiteboardCard imageUrl={whiteboardImages.businessCards} title="Business Cards" />),
+    trigger: (<WhiteboardCard imageUrl={whiteboardImages.businessCards} title="Business Cards" desc={<>Create with 3.5 x 2 inch <br/>(1050 x 600 px)</>} />),
+    type:"design-item"
+  },
+  {
+    trigger: (<WhiteboardCard imageUrl={whiteboardImages.flyers} title="Flyers" desc={<>Create with 8.5 x 11 inch <br/>(816 x 1058 px)</>} />),
     type:"design-item"
   }
 ]
