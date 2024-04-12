@@ -1,36 +1,36 @@
-import Image from "next/image";
-import whiteboarding from "@/public/images/whiteboarding.png"
-import powerfulDesign from "@/public/images/powerful-design.png"
 import powerfulPresentation from "@/public/images/powerful-presentation.png"
-import { ReactNode } from "react";
-
-interface CreateWhiteboarding {
-  trigger: ReactNode
-}
+import WhiteboardCard from "../_components/dashboard/whiteboarding/WhiteboardCard";
+import { whiteboardImages } from "./whiteboarding-images";
+import { CreateWhiteboarding } from "@/types";
 
 export const createWhiteboarding: CreateWhiteboarding[] = [
   {
-    trigger: (
-      <div className="rounded-xl flex bg-white overflow-hidden items-center">
-        <h2 className="px-8 font-semibold text-[19px] text-left">Create powerful <br/>whiteboarding</h2>
-        <Image width={188} height={188} src={whiteboarding} alt="whiteboarding" />
-      </div>
-    )
+    trigger: (<WhiteboardCard imageUrl={whiteboardImages.meetingAgenda} title={<>Team meeting <br/>agenda</>} desc="Create a meeting agenda"/>),
+    type:"whiteboard"
   },
   {
-    trigger: (
-        <div className="rounded-xl flex bg-white overflow-hidden items-center">
-          <h2 className="px-8 font-semibold text-[19px] text-left">Create powerful <br/>design</h2>
-          <Image width={188} height={188} src={powerfulDesign} alt="powerful-design" />
-        </div>
-    )
+    trigger: (<WhiteboardCard imageUrl={whiteboardImages.mindmap} title="Mindmap" desc="Create a mindmap"/>),
+    type:"whiteboard"
   },
   {
-    trigger: (
-        <div className="rounded-xl flex bg-white overflow-hidden items-center">
-          <h2 className="px-8 font-semibold text-[19px] text-left">Create powerful <br/>presentation</h2>
-          <Image width={188} height={188} src={powerfulPresentation} alt="powerful-presentation" />
-        </div>
-    )
+    trigger: (<WhiteboardCard imageUrl={whiteboardImages.flowchart} title="Flow chart" />),
+    type:"whiteboard"
+  },
+  {
+    trigger: (<WhiteboardCard imageUrl={whiteboardImages.businessCards} title="Business Cards" />),
+    type:"design-item"
+  }
+]
+
+export const whiteboardingTriggers = [
+  {
+    className: "data-[state=active]:bg-[#AA67FF]",
+    title: "Whiteboard",
+    type: "whiteboard"
+  },
+  {
+    className: "data-[state=active]:bg-[#6792FF]",
+    title: "Design item",
+    type: "design-item"
   }
 ]

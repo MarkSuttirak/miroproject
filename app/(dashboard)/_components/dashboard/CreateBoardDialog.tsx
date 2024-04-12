@@ -4,9 +4,10 @@ import BoardDialog from "@/components/BoardDialog"
 
 interface CreateBoardDialogProps {
   trigger: ReactNode | string
+  triggerClassName?: string
 }
   
-const CreateBoardDialog = ({ trigger } : CreateBoardDialogProps) => {
+const CreateBoardDialog = ({ trigger, triggerClassName } : CreateBoardDialogProps) => {
   const [openDialog, setOpenDialog] = useState(false)
 
   const { isCreating, createBoard } = useCreateBoard({
@@ -16,6 +17,7 @@ const CreateBoardDialog = ({ trigger } : CreateBoardDialogProps) => {
   return (
     <BoardDialog 
       trigger={trigger}
+      triggerClassName={triggerClassName}
       action="Create"
       onSubmit={(title) => createBoard(title)}
       isSubmitting={isCreating}

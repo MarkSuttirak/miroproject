@@ -1,14 +1,23 @@
 import { DropdownMenuContentProps } from "@radix-ui/react-dropdown-menu"
+import { StaticImageData } from "next/image"
+import { ReactNode } from "react"
 
 export type BoardCardType = "grid" | "list" | string
 
 export type Action = "Update" | "Create" | "Delete"
 
+export type WhiteboardingType = "whiteboard" | "presentation" | "design-item"
+
+export interface CreateWhiteboarding {
+  trigger: ReactNode
+  type: WhiteboardingType
+}
+
 export interface MenuLinkProps {
     link: string
     active: string
     setActive: (link: string) => void
-    icon: React.ReactNode
+    icon: ReactNode
     title: string
     onClick?: () => void
     submenus?: SidebarMenuProps[]
@@ -21,8 +30,8 @@ export interface MenuItemsProps {
 }
 
 export interface MenuModalProps {
-    trigger: React.ReactNode | string
-    children: React.ReactNode
+    trigger: ReactNode | string
+    children: ReactNode
     contentClassName?: string
 }
 
@@ -33,13 +42,13 @@ export interface OpenMobileSidebarProps {
 
 export interface SidebarMenuProps {
     title: string
-    icon: React.ReactNode
+    icon: ReactNode
     link: string
 }
 
 export interface TemplatePageMenuProps {
     title: string
-    icon: React.ReactNode
+    icon: ReactNode
     submenus?: SidebarMenuProps[]
     link?: string
 }
@@ -57,7 +66,7 @@ export interface BoardCardProps {
 
 export interface BoardDialogProps {
     id?: any
-    trigger?: string | React.ReactNode
+    trigger?: string | ReactNode
     triggerClassName?: string
     action: Action
     onSubmit: (val: string, id: any) => void
@@ -75,14 +84,26 @@ export interface BoardCardListProps {
 export interface ActionsProps {
     side?: DropdownMenuContentProps["side"]
     sideOffset?: DropdownMenuContentProps["sideOffset"]
-    children: React.ReactNode
+    children: ReactNode
     id?: any
     title?: string
     className?: string
 }
 
 export interface CenterButtonProps {
-    icon: React.ReactNode
+    icon: ReactNode
     title: string
     desc: string
+}
+
+export interface WhiteboardCardProps {
+    imageUrl: StaticImageData
+    title: string | ReactNode
+    desc?: string | ReactNode
+}
+
+export interface WhiteboardTriggers {
+    className: string
+    title: string
+    type: WhiteboardingType
 }

@@ -29,7 +29,7 @@ import { useState } from "react"
 import useSortData from "@/hooks/use-sort-data"
 import { cn } from "@/lib/utils"
 import CenterButton from "@/components/CenterButton"
-import Whiteboarding from "./_components/dashboard/Whiteboarding"
+import Whiteboarding from "./_components/dashboard/whiteboarding/Whiteboarding"
 
 const Board = () => {
   const data = useQuery(api.board.get)

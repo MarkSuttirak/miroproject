@@ -16,14 +16,6 @@ const BoardTopbar = ({ boardId } : BoardTopbarProps) => {
 
   const data = useQuery(api.board.get_room, {id: boardId as Id<"boards">})
 
-  useEffect(() => {
-    if (data?.title){
-      document.title = `${data?.title} - Miroproj`
-    } else {
-      document.title = `Miroproj`
-    }
-  }, [data?.title])
-
   return (
     <section className='h-12 grid grid-cols-3 items-center px-4 bg-darkpurple fade-in text-white'>
       <div className="flex items-center gap-x-2">
