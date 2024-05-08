@@ -3,7 +3,6 @@ import { createWhiteboarding, whiteboardingTriggers } from "../../../_data/creat
 import CreateBoardDialog from "../CreateBoardDialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Image from "next/image"
-import { allTemps } from "@/app/(dashboard)/_data/whiteboarding-images"
 import { ChevronRight, Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 
@@ -54,6 +53,7 @@ const Whiteboarding = () => {
     switch (tab) {
       case "whiteboard": setBgGradient("linear-gradient(180deg, #FFFFFF -72.08%, #FFFFFF -72.04%, #DDD5FF 224.77%)"); break
       case "design-item": setBgGradient("linear-gradient(180deg, #FFFFFF -72.08%, #FFFFFF -72.04%, #D5F2FF 224.77%)"); break
+      case "social-media": setBgGradient("linear-gradient(180deg, #FFFFFF -72.08%, #FFFFFF -72.04%, #DDFFD5 224.77%)"); break
       default: setBgGradient("linear-gradient(180deg, #FFFFFF -72.08%, #FFFFFF -72.04%, #FFD5FD 224.77%)"); break
     }
   }
